@@ -30,9 +30,9 @@ def base_url(host, port):
     return 'http://%s:%s' % (host, int(port or 8780))
 
 
-def fetch_pages(host, port, timeout=5):
-    """Lijst met pagina's van de beeldserver."""
-    with urlopen(base_url(host, port) + '/pages.json', timeout=timeout) as resp:
+def fetch_pages(host, port, timeout=5, prefix=''):
+    """Lijst met pagina's van de beeldserver (of van de Homey-app met prefix /beeld)."""
+    with urlopen(base_url(host, port) + prefix + '/pages.json', timeout=timeout) as resp:
         data = json.loads(resp.read().decode('utf-8'))
     pages = [p for p in data.get('pages', []) if isinstance(p, str)]
     if not pages:
@@ -40,11 +40,11 @@ def fetch_pages(host, port, timeout=5):
     return pages
 
 
-def download_page(host, port, page, path, timeout=20):
+def download_page(host, port, page, path, timeout=20, prefix='', ext='jpg'):
     """Haalt de afbeelding van een pagina op en schrijft die naar path."""
-    with urlopen('%s/page/%s.jpg' % (base_url(host, port), page), timeout=timeout) as resp:
+    with urlopen('%s%s/page/%s.%s' % (base_url(host, port), prefix, page, ext), timeout=timeout) as resp:
         body = resp.read()
-    if len(body) < 1000 or body[:2] != b'\xff\xd8':
+    if len(body) < 1000 or not (body[:2] == b'\xff\xd8' or body[:4] == b'\x89PNG'):
         raise ValueError('geen geldige afbeelding')
     with open(path, 'wb') as fh:
         fh.write(body)

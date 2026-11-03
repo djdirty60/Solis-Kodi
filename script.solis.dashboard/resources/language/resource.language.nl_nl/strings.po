@@ -57,5 +57,8 @@ msgstr "Ingebouwde pagina's"
 
 msgctxt "#30012"
 msgid "No connection to the image server. Is it running on the computer?"
-msgstr "Geen verbinding met de beeldserver. Draait hij op de computer?"
+msgstr "Geen verbinding met de beeldbron. Controleer het Homey-adres in de instellingen (of draait de beeldserver?)."
 
+msgctxt "#30022"
+msgid "Image from the Homey app (recommended, no computer needed)"
+msgstr "Beeld uit de Homey-app (aanbevolen, geen computer nodig)"

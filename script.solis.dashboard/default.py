@@ -6,7 +6,7 @@ import xbmcaddon
 def run():
     addon = xbmcaddon.Addon()
     path = addon.getAddonInfo('path')
-    if (addon.getSetting('mode') or '0') == '1':
+    if (addon.getSetting('mode') or '2') == '1':
         from resources.lib.window import SolisWindow
         win = SolisWindow('script-solis-dashboard.xml', path, 'default', '1080i')
     else:

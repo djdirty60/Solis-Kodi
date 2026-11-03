@@ -56,6 +56,9 @@ msgid "Built-in pages"
 msgstr "Built-in pages"
 
 msgctxt "#30012"
-msgid "No connection to the image server. Is it running on the computer?"
-msgstr "No connection to the image server. Is it running on the computer?"
+msgid "No connection to the image source. Check the Homey address in the settings (or is the image server running?)."
+msgstr "No connection to the image source. Check the Homey address in the settings (or is the image server running?)."
 
+msgctxt "#30022"
+msgid "Image from the Homey app (recommended, no computer needed)"
+msgstr "Image from the Homey app (recommended, no computer needed)"

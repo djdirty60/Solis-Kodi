@@ -1,16 +1,17 @@
 # Solis Dashboard voor Kodi
 
-Kodi-add-on voor de Homey-app **Solis voor Homey**. Toont je zonnepanelen op de tv, in twee varianten:
+Kodi-add-on voor de Homey-app **Solis voor Homey**. Toont je zonnepanelen op de tv, in drie varianten:
 
-1. **Echt dashboard als beeld (standaard)**: precies hetzelfde als op de Mac of in de browser, alle pagina's. Hiervoor draait op een computer die aan blijft staan de **Solis beeldserver** (map `beeld-server`).
-2. **Ingebouwde pagina's**: 7 eigen Kodi-pagina's, zonder extra computer. Vereist Solis voor Homey **3.34.0 of nieuwer**.
+1. **Beeld uit de Homey-app (standaard)**: de Solis-app op je Homey tekent het dashboard zelf als afbeelding, in dezelfde stijl als op de Mac. Geen computer nodig. Vereist Solis voor Homey **3.35.0 of nieuwer**.
+2. **Beeld van de beeldserver**: het echte webdashboard als beeld, pixel voor pixel. Hiervoor draait op een computer die aan blijft de **Solis beeldserver** (map `beeld-server`).
+3. **Ingebouwde pagina's**: 7 eigen Kodi-pagina's. Vereist Solis voor Homey **3.34.0 of nieuwer**.
 
 Gemaakt door Wilfried van der Voort.
 
 ## Stappen
-1. Zet de beeldserver aan op je Mac: zie [beeld-server/README.md](beeld-server/README.md).
+1. Installeer Solis voor Homey 3.35.0 of nieuwer op je Homey.
 2. Installeer de add-on in Kodi (hieronder).
-3. Vul bij de instellingen van de add-on het adres van je Mac in.
+3. Zet bij de instellingen van de add-on het adres van je Homey (poort 8765).
 4. Start de add-on. Links en rechts wisselt van pagina, Terug sluit af.
 
 ## Installeren op CoreELEC / Kodi (met automatische updates)

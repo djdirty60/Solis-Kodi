@@ -33,8 +33,15 @@ class SolisImageWindow(xbmcgui.WindowXML):
         self._flip = 0
         self._want = True        # er moet een nieuwe afbeelding komen
         self._hint_until = 0.0
-        self.host = s.getSetting('render_host')
-        self.port = int(s.getSetting('render_port') or 8780)
+        self.homey = (s.getSetting('mode') or '2') == '2'
+        if self.homey:   # beeld rechtstreeks uit de Homey-app
+            self.host = s.getSetting('host') or 'homey.local'
+            self.port = int(s.getSetting('port') or 8765)
+            self.prefix, self.ext = '/beeld', 'png'
+        else:            # beeld van de beeldserver op een computer
+            self.host = s.getSetting('render_host')
+            self.port = int(s.getSetting('render_port') or 8780)
+            self.prefix, self.ext = '', 'jpg'
         self.refresh = max(3, int(s.getSetting('refresh') or 10))
         self.rotate = max(0, int(s.getSetting('rotate') or 0))
         self.pages = list(DEFAULT_PAGES)
@@ -78,7 +85,7 @@ class SolisImageWindow(xbmcgui.WindowXML):
             now = time.time()
             if self.host and not listed:
                 try:
-                    pages = client.fetch_pages(self.host, self.port)
+                    pages = client.fetch_pages(self.host, self.port, prefix=self.prefix)
                     with self._lock:
                         self.pages = pages
                         self.index = min(self.index, len(pages) - 1)
@@ -93,9 +100,9 @@ class SolisImageWindow(xbmcgui.WindowXML):
                     self._want = False
                 last = now
                 self._flip = 1 - self._flip
-                path = os.path.join(self._tmp, 'solis_beeld_%d.jpg' % self._flip)
+                path = os.path.join(self._tmp, 'solis_beeld_%d.%s' % (self._flip, self.ext))
                 try:
-                    client.download_page(self.host, self.port, page, path)
+                    client.download_page(self.host, self.port, page, path, prefix=self.prefix, ext=self.ext)
                     with self._lock:
                         still = page == self.pages[self.index]
                     if still:
