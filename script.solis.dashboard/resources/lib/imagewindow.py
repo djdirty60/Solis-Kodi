@@ -8,12 +8,15 @@ import xbmc
 import xbmcgui
 import xbmcvfs
 
-from . import client, remote
+from . import client, remote, tv
 
 ACTION_MOVE_LEFT = 1
 ACTION_MOVE_RIGHT = 2
+ACTION_MOVE_UP = 3
+ACTION_MOVE_DOWN = 4
 ACTION_SELECT_ITEM = 7
 ACTION_PREVIOUS_MENU = 10
+ACTION_SHOW_INFO = 11
 ACTION_NAV_BACK = 92
 
 DEFAULT_PAGES = ['zon', 'stroom', 'meer', 'inzicht', 'overzicht', 'dynamisch', 'verbruik', 'slim', 'instel']
@@ -34,6 +37,9 @@ class SolisImageWindow(xbmcgui.WindowXML):
         self._flip = 0
         self._want = True        # er moet een nieuwe afbeelding komen
         self._hint_until = 0.0
+        self.big = tv.as_bool(self._opt('big_text'), False)
+        self.zoom = 0            # 0 = passen, 1 = onderkant groot, 2 = bovenkant groot
+        self.day = None          # datum als het dag-venster open is
         self.homey = (s.getSetting('mode') or '2') == '2'
         if self.homey:   # beeld rechtstreeks uit de Homey-app
             self.host = s.getSetting('host') or 'homey.local'
@@ -49,10 +55,21 @@ class SolisImageWindow(xbmcgui.WindowXML):
         self.index = min(max(0, int(s.getSetting('startpage') or 0)), len(self.pages) - 1)
         self._tmp = xbmcvfs.translatePath('special://temp/')
         self._set(14, '' if self.host else s.getLocalizedString(30012))
+        self._show_day_group(False)
+        self._apply_zoom()
         threading.Thread(target=self._loop, daemon=True).start()
 
     def onAction(self, action):
         aid = action.getId()
+        if self.day is not None:      # dag-terugblik is open
+            if aid in (ACTION_PREVIOUS_MENU, ACTION_NAV_BACK, ACTION_SHOW_INFO):
+                self.day = None
+                self._show_day_group(False)
+            elif aid == ACTION_MOVE_LEFT:
+                self._open_day(-1)
+            elif aid == ACTION_MOVE_RIGHT:
+                self._open_day(1)
+            return
         if aid in (ACTION_PREVIOUS_MENU, ACTION_NAV_BACK):
             self._stop = True
             self.close()
@@ -60,8 +77,75 @@ class SolisImageWindow(xbmcgui.WindowXML):
             self._go(1)
         elif aid == ACTION_MOVE_LEFT:
             self._go(-1)
+        elif aid == ACTION_MOVE_UP:
+            self.zoom = tv.step_zoom(self.zoom, 'up')
+            self._apply_zoom()
+        elif aid == ACTION_MOVE_DOWN:
+            self.zoom = tv.step_zoom(self.zoom, 'down')
+            self._apply_zoom()
+        elif aid == ACTION_SHOW_INFO and self.host:
+            self._open_day(None)
+        elif aid in tv.BUTTONS:
+            nr = tv.button_page(aid, self._opt, self.pages)
+            if nr is not None:
+                with self._lock:
+                    self.index = nr
+                    self._want = True
+                    self._last_rotate = time.time()
         elif aid == ACTION_SELECT_ITEM and self.host:
             threading.Thread(target=self._apparaten, daemon=True).start()
+
+    # ---------- zoom ----------
+    def _apply_zoom(self):
+        base = tv.BIG_IMAGE_ZOOM if (self.big and self.homey) else 1.0
+        x, y, w, h = tv.zoom_rect(self.zoom, base)
+        try:
+            ctl = self.getControl(20)
+            ctl.setPosition(x, y)
+            ctl.setWidth(w)
+            ctl.setHeight(h)
+        except Exception:  # noqa: BLE001
+            pass
+
+    # ---------- dag-terugblik ----------
+    def _show_day_group(self, visible):
+        try:
+            self.getControl(30).setVisible(bool(visible))
+        except Exception:  # noqa: BLE001
+            pass
+
+    def _open_day(self, step):
+        """step None = openen (gisteren); -1/1 = een dag terug/verder."""
+        if step is None:
+            date = tv.shift_date(None, 0)
+        else:
+            date = tv.shift_date(self.day, step)
+        self.day = date
+        self._set(31, date, tv.font_for('sd_head', self.big))
+        threading.Thread(target=self._load_day, args=(date,), daemon=True).start()
+        self._show_day_group(True)
+
+    def _load_day(self, date):
+        try:
+            title, lines, text = tv.day_lines(client.fetch_day(self.host, self.port, date))
+        except Exception:  # noqa: BLE001
+            title, lines, text = date, [], self.addon.getLocalizedString(30012)
+        if self.day != date:
+            return   # intussen een andere dag gekozen
+        self._set(31, date, tv.font_for('sd_head', self.big))
+        for i in range(6):
+            self._set(32 + i, lines[i] if i < len(lines) else '', tv.font_for('sd_title', self.big))
+        try:
+            self.getControl(38).setText(text)
+        except Exception:  # noqa: BLE001
+            pass
+
+    def _opt(self, key):
+        """Instelling lezen; een ontbrekende instelling geeft '' (dan geldt de standaardwaarde)."""
+        try:
+            return self.addon.getSetting(key)
+        except Exception:  # noqa: BLE001
+            return ''
 
     def _apparaten(self):
         """OK-knop: menu om apparaten klaar te zetten (met pincode)."""
@@ -106,9 +190,12 @@ class SolisImageWindow(xbmcgui.WindowXML):
             self._want = True
             self._last_rotate = time.time()
 
-    def _set(self, cid, text):
+    def _set(self, cid, text, font=None):
         try:
-            self.getControl(cid).setLabel(text)
+            if font:
+                self.getControl(cid).setLabel(text, font=font)
+            else:
+                self.getControl(cid).setLabel(text)
         except Exception:  # noqa: BLE001
             pass
 
@@ -161,7 +248,7 @@ class SolisImageWindow(xbmcgui.WindowXML):
                     xbmc.log('Solis dashboard: beeld ophalen mislukt: %s' % exc, xbmc.LOGWARNING)
                     self._set(14, self.addon.getLocalizedString(30012))
                 self._hint_until = max(self._hint_until, now + 3) if self._hint_until == 0 else now + 3
-                self._set(13, self._page_title() + '   OK = apparaten')
+                self._set(13, self._page_title() + '   ' + self.addon.getLocalizedString(30070), tv.font_for('sd_text', self.big))
             if self._hint_until and now > self._hint_until:
                 self._hint_until = 0
                 self._set(13, '')

@@ -90,3 +90,75 @@ msgstr "PIN (leave empty = ask every time)"
 msgctxt "#30041"
 msgid "Appliances"
 msgstr "Appliances"
+
+msgctxt "#30050"
+msgid "TV extras"
+msgstr "TV extras"
+
+msgctxt "#30051"
+msgid "Mini card: show for (seconds)"
+msgstr "Mini card: show for (seconds)"
+
+msgctxt "#30052"
+msgid "Coloured edge around the screen (traffic light)"
+msgstr "Coloured edge around the screen (traffic light)"
+
+msgctxt "#30053"
+msgid "Large text"
+msgstr "Large text"
+
+msgctxt "#30054"
+msgid "Red button goes to page"
+msgstr "Red button goes to page"
+
+msgctxt "#30055"
+msgid "Green button goes to page"
+msgstr "Green button goes to page"
+
+msgctxt "#30056"
+msgid "Yellow button goes to page"
+msgstr "Yellow button goes to page"
+
+msgctxt "#30057"
+msgid "Blue button goes to page"
+msgstr "Blue button goes to page"
+
+msgctxt "#30060"
+msgid "Sun"
+msgstr "Sun"
+
+msgctxt "#30061"
+msgid "Power"
+msgstr "Power"
+
+msgctxt "#30062"
+msgid "Details"
+msgstr "Details"
+
+msgctxt "#30063"
+msgid "Insight"
+msgstr "Insight"
+
+msgctxt "#30064"
+msgid "Overview"
+msgstr "Overview"
+
+msgctxt "#30065"
+msgid "Dynamic"
+msgstr "Dynamic"
+
+msgctxt "#30066"
+msgid "Usage"
+msgstr "Usage"
+
+msgctxt "#30067"
+msgid "Smart"
+msgstr "Smart"
+
+msgctxt "#30068"
+msgid "Options"
+msgstr "Options"
+
+msgctxt "#30070"
+msgid "OK = appliances   i = day   up/down = zoom   colour = page"
+msgstr "OK = appliances   i = day   up/down = zoom   colour = page"

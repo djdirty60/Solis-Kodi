@@ -90,3 +90,75 @@ msgstr "PIN (leeg laten = elke keer vragen)"
 msgctxt "#30041"
 msgid "Appliances"
 msgstr "Apparaten"
+
+msgctxt "#30050"
+msgid "TV extras"
+msgstr "Extra's op de tv"
+
+msgctxt "#30051"
+msgid "Mini card: show for (seconds)"
+msgstr "Mini-kaart: tonen (seconden)"
+
+msgctxt "#30052"
+msgid "Coloured edge around the screen (traffic light)"
+msgstr "Gekleurde rand om het scherm (verkeerslicht)"
+
+msgctxt "#30053"
+msgid "Large text"
+msgstr "Grote letters"
+
+msgctxt "#30054"
+msgid "Red button goes to page"
+msgstr "Rode knop gaat naar pagina"
+
+msgctxt "#30055"
+msgid "Green button goes to page"
+msgstr "Groene knop gaat naar pagina"
+
+msgctxt "#30056"
+msgid "Yellow button goes to page"
+msgstr "Gele knop gaat naar pagina"
+
+msgctxt "#30057"
+msgid "Blue button goes to page"
+msgstr "Blauwe knop gaat naar pagina"
+
+msgctxt "#30060"
+msgid "Sun"
+msgstr "Zon"
+
+msgctxt "#30061"
+msgid "Power"
+msgstr "Stroom"
+
+msgctxt "#30062"
+msgid "Details"
+msgstr "Details"
+
+msgctxt "#30063"
+msgid "Insight"
+msgstr "Inzicht"
+
+msgctxt "#30064"
+msgid "Overview"
+msgstr "Overzicht"
+
+msgctxt "#30065"
+msgid "Dynamic"
+msgstr "Dynamisch"
+
+msgctxt "#30066"
+msgid "Usage"
+msgstr "Verbruik"
+
+msgctxt "#30067"
+msgid "Smart"
+msgstr "Slim"
+
+msgctxt "#30068"
+msgid "Options"
+msgstr "Opties"
+
+msgctxt "#30070"
+msgid "OK = appliances   i = day   up/down = zoom   colour = page"
+msgstr "OK = apparaten   i = dag   omhoog/omlaag = zoom   kleur = pagina"

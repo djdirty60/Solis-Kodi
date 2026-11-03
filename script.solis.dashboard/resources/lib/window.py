@@ -6,7 +6,7 @@ import time
 import xbmc
 import xbmcgui
 
-from . import client, layout
+from . import client, layout, tv
 
 ACTION_MOVE_LEFT = 1
 ACTION_MOVE_RIGHT = 2
@@ -34,7 +34,8 @@ class SolisWindow(xbmcgui.WindowXML):
         self.refresh = max(3, int(s.getSetting('refresh') or 10))
         self.rotate = max(0, int(s.getSetting('rotate') or 0))
         self.page = max(0, int(s.getSetting('startpage') or 0))
-        self.getControl(13).setLabel(s.getLocalizedString(30011))
+        self.big = tv.as_bool(s.getSetting('big_text'), False)
+        self._set(13, s.getLocalizedString(30011), tv.font_for('sd_small', self.big))
         self._hide_all()
         threading.Thread(target=self._loop, daemon=True).start()
 
@@ -82,9 +83,26 @@ class SolisWindow(xbmcgui.WindowXML):
                 break
 
     # ---------- tekenen ----------
+    # lettertype per kop-label; kaartkoppen en eenheden krijgen bij 'grote letters' een grotere letter
+    HEAD_FONTS = {10: 'sd_head', 11: 'sd_small', 12: 'sd_text', 13: 'sd_small', 14: 'sd_small'}
+
+    def _font(self, cid):
+        if not getattr(self, 'big', False):
+            return None
+        if cid in self.HEAD_FONTS:
+            return tv.font_for(self.HEAD_FONTS[cid], True)
+        if 100 <= cid < 200:
+            kind = cid % 10
+            return tv.font_for({1: 'sd_text', 3: 'sd_title'}.get(kind, ''), True) if kind in (1, 3) else None
+        return None
+
     def _set(self, cid, text):
         try:
-            self.getControl(cid).setLabel(text)
+            font = self._font(cid)
+            if font:
+                self.getControl(cid).setLabel(text, font=font)
+            else:
+                self.getControl(cid).setLabel(text)
         except Exception:  # noqa: BLE001
             pass
 

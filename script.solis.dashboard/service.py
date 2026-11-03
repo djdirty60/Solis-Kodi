@@ -20,6 +20,7 @@ def read_settings():
         'host': a.getSetting('host') or 'homey.local',
         'port': as_int(a.getSetting('port'), 8765, 1, 65535),
         'icon': a.getAddonInfo('icon'),
+        'edge': as_bool(a.getSetting('edge_light'), False),
     }
 
 
@@ -40,12 +41,24 @@ def run():
 
     notifier = Notifier(fetch, show, settings, playing=lambda: player.isPlayingVideo(),
                         log=lambda t: xbmc.log(t, xbmc.LOGWARNING))
+    edge = None
+    edge_ctl = None
     if monitor.waitForAbort(15):   # even wachten: netwerk komt na het opstarten pas op
         return
     while not monitor.abortRequested():
         notifier.poll()
+        if cfg.get('edge') and edge_ctl is None:   # pas maken als de rand echt aan staat
+            from resources.lib.edge import Edge
+            from resources.lib.tv import EdgeController
+            edge = Edge(xbmcaddon.Addon())
+            edge_ctl = EdgeController(lambda: client.fetch_data(cfg['host'], cfg['port']), edge.show, edge.hide,
+                                      lambda: cfg.get('edge', False))
+        if edge_ctl is not None:
+            edge_ctl.tick()
         if monitor.waitForAbort(INTERVAL):
             break
+    if edge is not None:
+        edge.hide()
 
 
 if __name__ == '__main__':

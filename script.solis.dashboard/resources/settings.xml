@@ -51,6 +51,50 @@
         </setting>
       </group>
     </category>
+    <category id="tvextras" label="30050">
+      <group id="4">
+        <setting id="mini_seconds" type="integer" label="30051">
+          <level>0</level>
+          <default>8</default>
+          <constraints><minimum>3</minimum><step>1</step><maximum>60</maximum></constraints>
+          <control type="slider" format="integer"><popup>false</popup></control>
+        </setting>
+        <setting id="edge_light" type="boolean" label="30052">
+          <level>0</level>
+          <default>false</default>
+          <control type="toggle"/>
+        </setting>
+        <setting id="big_text" type="boolean" label="30053">
+          <level>0</level>
+          <default>false</default>
+          <control type="toggle"/>
+        </setting>
+        <setting id="key_red" type="string" label="30054">
+          <level>0</level>
+          <default>zon</default>
+          <constraints><options><option label="30060">zon</option><option label="30061">stroom</option><option label="30062">meer</option><option label="30063">inzicht</option><option label="30064">overzicht</option><option label="30065">dynamisch</option><option label="30066">verbruik</option><option label="30067">slim</option><option label="30068">instel</option></options></constraints>
+          <control type="list" format="string"><heading>30054</heading></control>
+        </setting>
+        <setting id="key_green" type="string" label="30055">
+          <level>0</level>
+          <default>stroom</default>
+          <constraints><options><option label="30060">zon</option><option label="30061">stroom</option><option label="30062">meer</option><option label="30063">inzicht</option><option label="30064">overzicht</option><option label="30065">dynamisch</option><option label="30066">verbruik</option><option label="30067">slim</option><option label="30068">instel</option></options></constraints>
+          <control type="list" format="string"><heading>30055</heading></control>
+        </setting>
+        <setting id="key_yellow" type="string" label="30056">
+          <level>0</level>
+          <default>dynamisch</default>
+          <constraints><options><option label="30060">zon</option><option label="30061">stroom</option><option label="30062">meer</option><option label="30063">inzicht</option><option label="30064">overzicht</option><option label="30065">dynamisch</option><option label="30066">verbruik</option><option label="30067">slim</option><option label="30068">instel</option></options></constraints>
+          <control type="list" format="string"><heading>30056</heading></control>
+        </setting>
+        <setting id="key_blue" type="string" label="30057">
+          <level>0</level>
+          <default>verbruik</default>
+          <constraints><options><option label="30060">zon</option><option label="30061">stroom</option><option label="30062">meer</option><option label="30063">inzicht</option><option label="30064">overzicht</option><option label="30065">dynamisch</option><option label="30066">verbruik</option><option label="30067">slim</option><option label="30068">instel</option></options></constraints>
+          <control type="list" format="string"><heading>30057</heading></control>
+        </setting>
+      </group>
+    </category>
     <category id="remote" label="30041">
       <group id="3">
         <setting id="pin" type="string" label="30040">

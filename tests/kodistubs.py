@@ -10,6 +10,11 @@ class Ctl:
     def setLabel(s, l='', **k): s.label = l
     def setImage(s, p, c=True): s.img = (p, c)
     def setColorDiffuse(s, c): s.diffuse = c
+    def setPosition(s, x, y): s.pos = (x, y)
+    def setWidth(s, w): s.w = w
+    def setHeight(s, h): s.h = h
+    def setVisible(s, v): s.visible = v
+    def setText(s, t): s.text = t
 
 
 def install(settings, abort_after=None):
@@ -34,6 +39,19 @@ def install(settings, abort_after=None):
         def close(s): s.closed = True
         def doModal(s): pass
     xbmcgui.WindowXML = WX
+    class WD:
+        def __init__(s, *a): s.controls = []; s.shown = False; s.closed = False
+        def setCoordinateResolution(s, r): pass
+        def addControl(s, c): s.controls.append(c)
+        def show(s): s.shown = True
+        def close(s): s.closed = True; s.shown = False
+    xbmcgui.WindowDialog = WD
+    class CI(Ctl):
+        def __init__(s, x, y, w, h, f, aspectRatio=0, colorDiffuse=''): Ctl.__init__(s, 0); s.diffuse = colorDiffuse
+    class CL(Ctl):
+        def __init__(s, x, y, w, h, label='', **k): Ctl.__init__(s, 0); s.label = label
+    xbmcgui.ControlImage = CI
+    xbmcgui.ControlLabel = CL
     xbmcgui.WindowXMLDialog = WX
     xbmcgui.Dialog = lambda: types.SimpleNamespace(notification=lambda *a: NOTES.append(a))
     xbmcvfs = types.ModuleType('xbmcvfs'); tmp = tempfile.mkdtemp() + '/'; xbmcvfs.translatePath = lambda p: tmp

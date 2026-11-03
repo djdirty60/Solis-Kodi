@@ -58,3 +58,25 @@ def fetch_notifications(host, port, since=None, timeout=5):
         url += '?since=%d' % int(since)
     with urlopen(url, timeout=timeout) as resp:
         return json.loads(resp.read().decode('utf-8'))
+
+
+def fetch_json(host, port, path, timeout=5):
+    """Haalt een JSON-antwoord op van de Solis-app op de Homey."""
+    with urlopen(base_url(host, port) + path, timeout=timeout) as resp:
+        return json.loads(resp.read().decode('utf-8'))
+
+
+def fetch_data(host, port, timeout=5):
+    """Alle gegevens van het dashboard (/data), o.a. het verkeerslicht."""
+    return fetch_json(host, port, '/data', timeout)
+
+
+def fetch_lucent(host, port, timeout=5):
+    """Klein overzicht met de belangrijkste cijfers (/lucent.json)."""
+    return fetch_json(host, port, '/lucent.json', timeout)
+
+
+def fetch_day(host, port, date=None, timeout=6):
+    """Terugblik op een dag (/dag?datum=JJJJ-MM-DD); zonder datum is het gisteren."""
+    path = '/dag' + ('?datum=%s' % date if date else '')
+    return fetch_json(host, port, path, timeout)

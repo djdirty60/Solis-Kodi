@@ -1,3 +1,10 @@
+2.4.0
+- Nieuw: mini-kaart rechtsonder met zon, huis en net, ook tijdens een film (RunScript(script.solis.dashboard,minikaart) aan een knop koppelen).
+- Nieuw: dunne gekleurde rand om het scherm volgens het verkeerslicht (groen, oranje, rood). Staat standaard uit.
+- Nieuw: kleurknoppen springen naar een pagina (instelbaar). Knop i opent de dag-terugblik (links en rechts = een dag terug of verder).
+- Nieuw: pijl omhoog of omlaag zoomt in op de boven- of onderkant van de pagina.
+- Nieuw: instelling grote letters.
+
 2.3.0
 - Nieuw: apparaten klaarzetten vanaf de tv. Druk op OK in het dashboard, kies een apparaat en voer je pincode in (of sla de pincode op in de instellingen). Een apparaat dat klaarstaat kun je annuleren. De pincode moet eerst in de Solis-app zijn ingesteld.
 

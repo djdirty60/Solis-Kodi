@@ -77,7 +77,7 @@ On Fire TV or Android you can fetch the file with the **Downloader** app:
 - **Image server address and port**: only for display mode 2.
 - **Refresh every (seconds)**, **switch page automatically every (seconds, 0 = off)** and **start page**.
 
-Controls: left and right change page, OK opens the appliances menu, Back closes the add-on.
+Controls: left and right change page, OK opens the appliances menu, Info (`i`) shows the day review, up and down zoom, the colour buttons jump to a page, Back closes the add-on. See "Extras on the TV" below.
 
 ## Notifications on the TV
 
@@ -111,6 +111,25 @@ The separate add-on **Solis Dashboard Screensaver** shows the dashboard on the T
 3. Go to **Settings, Interface, Screensaver**, choose **Solis Dashboard Screensaver** and set the **Wait time** (the inactivity time before it starts).
 
 Needs Solis voor Homey 3.35.0 or newer.
+
+## Extras on the TV (2.4.0)
+
+All settings are under **TV extras** in the add-on settings.
+
+- **Mini card during a film.** A small card at the bottom right shows solar, house and grid power, refreshes every 2 seconds and closes by itself after a few seconds (default 8) or on Back/OK. Bind it to a remote button with a keymap, for example in `userdata/keymaps/solis.xml`:
+
+  ```xml
+  <keymap><global><remote>
+    <blue>RunScript(script.solis.dashboard,minikaart)</blue>
+  </remote></global></keymap>
+  ```
+
+  Needs Solis voor Homey 3.37.0 or newer (`/lucent.json`).
+- **Coloured edge (traffic light).** Optional thin coloured edge around the screen: green = good moment, orange = normal, red = better not. Off by default. Checked every 30 seconds by the background service.
+- **Colour buttons.** Red, green, yellow and blue jump to a page you choose (default Sun, Power, Dynamic, Usage). Whether the buttons reach Kodi depends on your remote and keymap.
+- **Day review.** Press `i` (Info) in the dashboard to see yesterday: generated, usage, bought, fed back, self-use and savings. Left and right go one day back or forward, Back closes it.
+- **Zoom.** Up zooms in on the top half of the page, down on the bottom half; the opposite key goes back.
+- **Large text.** Bigger labels on the built-in pages and the mini card; the image pages are shown slightly larger.
 
 ## How it works
 
