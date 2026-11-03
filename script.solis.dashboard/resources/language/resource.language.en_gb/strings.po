@@ -35,3 +35,27 @@ msgctxt "#30011"
 msgid "Use left and right to switch pages, Back to close"
 msgstr "Use left and right to switch pages, Back to close"
 
+msgctxt "#30006"
+msgid "Display"
+msgstr "Display"
+
+msgctxt "#30007"
+msgid "Address of the computer running the image server"
+msgstr "Address of the computer running the image server"
+
+msgctxt "#30008"
+msgid "Image server port"
+msgstr "Image server port"
+
+msgctxt "#30020"
+msgid "Real dashboard as image (1 to 1)"
+msgstr "Real dashboard as image (1 to 1)"
+
+msgctxt "#30021"
+msgid "Built-in pages"
+msgstr "Built-in pages"
+
+msgctxt "#30012"
+msgid "No connection to the image server. Is it running on the computer?"
+msgstr "No connection to the image server. Is it running on the computer?"
+

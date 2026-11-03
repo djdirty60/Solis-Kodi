@@ -1,2 +1,6 @@
+2.0.0
+- Nieuw: toont het echte dashboard als beeld (1 op 1 zoals op de Mac) via de Solis beeldserver. Dit is nu de standaard.
+- De eigen pagina's uit 1.0.0 blijven beschikbaar via de instelling Weergave.
+
 1.0.0
-- Eerste versie: 7 pagina's (Nu, Overzicht, Prijzen, Slim, Verbruik, Plan, Opties) met gegevens uit Solis voor Homey.
+- Eerste versie: 7 pagina's met gegevens uit Solis voor Homey.

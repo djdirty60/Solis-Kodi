@@ -1,0 +1,9 @@
+{
+  "name": "solis-beeld",
+  "version": "1.0.0",
+  "description": "Maakt schermafbeeldingen van het Solis-dashboard voor de Kodi-add-on",
+  "main": "solis-beeld.js",
+  "license": "MIT",
+  "scripts": { "start": "node solis-beeld.js" },
+  "dependencies": { "playwright": "^1.47.0" }
+}

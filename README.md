@@ -1,33 +1,33 @@
 # Solis Dashboard voor Kodi
 
-Kodi-add-on die het dashboard van de Homey-app **Solis voor Homey** toont op je tv: opwek nu, vandaag, jaar, uurprijzen, slimme tips, plan en instellingen.
+Kodi-add-on voor de Homey-app **Solis voor Homey**. Toont je zonnepanelen op de tv, in twee varianten:
+
+1. **Echt dashboard als beeld (standaard)**: precies hetzelfde als op de Mac of in de browser, alle pagina's. Hiervoor draait op een computer die aan blijft staan de **Solis beeldserver** (map `beeld-server`).
+2. **Ingebouwde pagina's**: 7 eigen Kodi-pagina's, zonder extra computer. Vereist Solis voor Homey **3.34.0 of nieuwer**.
 
 Gemaakt door Wilfried van der Voort.
 
-## Wat heb je nodig
-- Homey Pro met de app *Solis voor Homey* **versie 3.34.0 of nieuwer** (die levert `/kodi.json`).
-- Kodi 19 of nieuwer (gemaakt voor Kodi 22) op een apparaat in hetzelfde netwerk als je Homey.
-- Het IP-adres van je Homey en de poort van het dashboard (standaard `8765`).
+## Stappen
+1. Zet de beeldserver aan op je Mac: zie [beeld-server/README.md](beeld-server/README.md).
+2. Installeer de add-on in Kodi (hieronder).
+3. Vul bij de instellingen van de add-on het adres van je Mac in.
+4. Start de add-on. Links en rechts wisselt van pagina, Terug sluit af.
 
-## Installeren op een Fire TV
-1. Installeer de app **Downloader** op de Fire TV.
-2. Open Downloader en voer het adres van de zip in: `https://github.com/djdirty60/Solis-Kodi/raw/main/script.solis.dashboard-1.0.0.zip`
-3. Laat het bestand downloaden en kies *Annuleren* of *Verwijderen* bij de vraag over installeren; het is geen app.
-4. Open Kodi, ga naar *Add-ons*, kies *Installeren vanuit zip-bestand* en kies het bestand in de map Downloads.
-5. Open *Add-ons → Programma-add-ons → Solis Dashboard → Configureren* en vul het IP-adres van je Homey in.
-6. Start de add-on. Links en rechts wisselt van pagina, Terug sluit af.
+## Installeren op CoreELEC / Kodi
+1. Download `script.solis.dashboard-2.0.0.zip` uit deze repository en pak hem **niet** uit.
+2. Zet het bestand op je CoreELEC, bijvoorbeeld via Finder: **Ga → Verbind met server** → `smb://coreelec` → map **Userdata**.
+3. Zet in Kodi **Instellingen → Systeem → Add-ons → Onbekende bronnen** aan.
+4. Kies **Add-ons → Installeren vanuit zip-bestand → Home-map → Userdata** en kies het zip-bestand.
+5. Ga naar **Add-ons → Programma-add-ons → Solis Dashboard → Configureren**.
 
-## Installeren op een computer
-Zet het zip-bestand op je computer, open in Kodi *Add-ons → Installeren vanuit zip-bestand* en kies het bestand.
+Op een Fire TV of Android-apparaat kun je het bestand ook ophalen met de app **Downloader**:
+`https://github.com/djdirty60/Solis-Kodi/raw/main/script.solis.dashboard-2.0.0.zip`
 
 ## Instellingen
-- **Adres en poort** van het dashboard.
-- **Verversen**: elke hoeveel seconden de gegevens worden opgehaald.
-- **Automatisch wisselen**: laat de pagina's vanzelf doorlopen (0 = uit).
-- **Startpagina**: 0 = Nu, 1 = Overzicht, 2 = Prijzen, 3 = Slim, 4 = Verbruik, 5 = Plan, 6 = Opties.
-
-## Hoe werkt het
-De add-on haalt elke paar seconden `http://<homey>:8765/kodi.json` op. Alle berekeningen doet de Homey-app. De add-on tekent alleen. Het is alleen-lezen: er kan niets worden aangepast.
+- **Weergave**: echt dashboard als beeld of ingebouwde pagina's.
+- **Adres en poort van de beeldserver** (voor het beeld).
+- **Adres en poort van het dashboard** (alleen voor de ingebouwde pagina's; poort 8765).
+- **Verversen** in seconden, **automatisch wisselen** (0 = uit), **startpagina**.
 
 ## Veiligheid
-Het dashboard heeft geen wachtwoord. Zet de poort dus niet open op internet; gebruik het alleen op je eigen netwerk.
+Het dashboard en de beeldserver hebben geen wachtwoord. Zet geen poorten open op internet; gebruik alles op je eigen netwerk.
