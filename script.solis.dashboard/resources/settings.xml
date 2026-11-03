@@ -51,6 +51,15 @@
         </setting>
       </group>
     </category>
+    <category id="remote" label="30041">
+      <group id="3">
+        <setting id="pin" type="string" label="30040">
+          <level>0</level>
+          <default></default>
+          <control type="edit" format="string"><heading>30040</heading><hidden>true</hidden></control>
+        </setting>
+      </group>
+    </category>
     <category id="notifications" label="30030">
       <group id="2">
         <setting id="notify_enabled" type="boolean" label="30031">

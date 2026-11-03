@@ -82,3 +82,11 @@ msgstr "Do not notify while a video is playing"
 msgctxt "#30034"
 msgid "Only warnings and good moments"
 msgstr "Only warnings and good moments"
+
+msgctxt "#30040"
+msgid "PIN (leave empty = ask every time)"
+msgstr "PIN (leave empty = ask every time)"
+
+msgctxt "#30041"
+msgid "Appliances"
+msgstr "Appliances"

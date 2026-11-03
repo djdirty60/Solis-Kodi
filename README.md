@@ -77,7 +77,7 @@ On Fire TV or Android you can fetch the file with the **Downloader** app:
 - **Image server address and port**: only for display mode 2.
 - **Refresh every (seconds)**, **switch page automatically every (seconds, 0 = off)** and **start page**.
 
-Controls: left and right change page, Back closes the add-on.
+Controls: left and right change page, OK opens the appliances menu, Back closes the add-on.
 
 ## Notifications on the TV
 
@@ -93,6 +93,14 @@ Settings (add-on settings, category **Notifications**):
 - **Only warnings and good moments**: hides plain information messages.
 
 Needs a Solis voor Homey version that serves `/meldingen.json` (the newest app version).
+
+## Arm appliances from the TV (PIN)
+
+Press **OK** on the dashboard to open the **Apparaten** menu. It lists the appliances the Solis app tracks (for example the washing machine). Pick one to arm it ("ready, start when solar or cheap power allows"); pick one that is already armed to cancel it. A PIN protects this. Set the PIN first in the Solis app (Settings, Dashboard); without a PIN the menu only shows a hint.
+
+In the add-on settings (category **Appliances**) you can store the PIN so you are not asked each time. Leave it empty to be asked every time (hidden input). A wrong PIN is never cleared from the settings, and after too many wrong attempts the Homey asks you to wait. The PIN is never written to the Kodi log.
+
+Needs a Solis voor Homey version that serves `/apparaten.json` and `/arm`.
 
 ## Screensaver
 
@@ -112,6 +120,7 @@ The Solis app on Homey serves everything on its dashboard port:
 - `/beeld/page/<page>.png` returns a 1920 x 1080 image of a page, drawn by a small rendering module in the app (no browser, no native libraries).
 - `/kodi.json` returns the data for the built-in pages.
 - `/meldingen.json?since=<id>` returns new notifications for the TV service.
+- `/apparaten.json` and `POST /arm` list and arm appliances (PIN protected).
 
 You can open the image URLs in any browser to check them, for example `http://HOMEY-IP:8765/beeld/page/stroom.png`.
 

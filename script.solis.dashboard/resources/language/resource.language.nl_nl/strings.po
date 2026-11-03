@@ -82,3 +82,11 @@ msgstr "Geen meldingen tijdens het afspelen van video"
 msgctxt "#30034"
 msgid "Only warnings and good moments"
 msgstr "Alleen waarschuwingen en goede momenten"
+
+msgctxt "#30040"
+msgid "PIN (leave empty = ask every time)"
+msgstr "PIN (leeg laten = elke keer vragen)"
+
+msgctxt "#30041"
+msgid "Appliances"
+msgstr "Apparaten"

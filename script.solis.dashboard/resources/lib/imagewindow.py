@@ -8,10 +8,11 @@ import xbmc
 import xbmcgui
 import xbmcvfs
 
-from . import client
+from . import client, remote
 
 ACTION_MOVE_LEFT = 1
 ACTION_MOVE_RIGHT = 2
+ACTION_SELECT_ITEM = 7
 ACTION_PREVIOUS_MENU = 10
 ACTION_NAV_BACK = 92
 
@@ -59,6 +60,45 @@ class SolisImageWindow(xbmcgui.WindowXML):
             self._go(1)
         elif aid == ACTION_MOVE_LEFT:
             self._go(-1)
+        elif aid == ACTION_SELECT_ITEM and self.host:
+            threading.Thread(target=self._apparaten, daemon=True).start()
+
+    def _apparaten(self):
+        """OK-knop: menu om apparaten klaar te zetten (met pincode)."""
+        if getattr(self, '_busy', False):
+            return
+        self._busy = True
+        try:
+            dlg = xbmcgui.Dialog()
+            try:
+                data = remote.fetch_devices(self.host, self.port)
+            except Exception:  # noqa: BLE001
+                dlg.notification('Solis', remote.TEXT_OFFLINE)
+                return
+            if not data['pin']:
+                dlg.ok('Solis', remote.TEXT_NO_PIN)
+                return
+            items = data['items']
+            if not items:
+                return
+            nr = dlg.select('Apparaten', [remote.label(i) for i in items])
+            if nr < 0:
+                return
+            item = items[nr]
+            actie = 'klaar'
+            if item.get('armed'):
+                if not dlg.yesno('Solis', 'Annuleren?'):
+                    return
+                actie = 'annuleer'
+            pin = self.addon.getSetting('pin') or ''
+            if not pin:
+                pin = dlg.input('PIN', type=xbmcgui.INPUT_NUMERIC, option=xbmcgui.ALPHANUM_HIDE_INPUT)
+                if not pin:
+                    return
+            ok, text = remote.arm(self.host, self.port, item['name'], actie, pin)
+            dlg.notification('Solis', text, xbmcgui.NOTIFICATION_INFO if ok else xbmcgui.NOTIFICATION_WARNING, 6000)
+        finally:
+            self._busy = False
 
     def _go(self, step):
         with self._lock:
@@ -121,7 +161,7 @@ class SolisImageWindow(xbmcgui.WindowXML):
                     xbmc.log('Solis dashboard: beeld ophalen mislukt: %s' % exc, xbmc.LOGWARNING)
                     self._set(14, self.addon.getLocalizedString(30012))
                 self._hint_until = max(self._hint_until, now + 3) if self._hint_until == 0 else now + 3
-                self._set(13, self._page_title())
+                self._set(13, self._page_title() + '   OK = apparaten')
             if self._hint_until and now > self._hint_until:
                 self._hint_until = 0
                 self._set(13, '')
