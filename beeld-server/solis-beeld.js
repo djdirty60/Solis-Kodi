@@ -47,7 +47,17 @@ async function haalPaginas() {
   } catch (e) { /* standaardlijst */ }
 }
 
+async function zorgVoorBrowser() {
+  if (browser && browser.isConnected()) return browser;
+  for (const k of Object.keys(cache)) { cache[k].page = null; }
+  console.log('Browser starten...');
+  browser = await chromium.launch();
+  browser.on('disconnected', () => { console.log('Browser is gestopt. Hij wordt bij het volgende verzoek opnieuw gestart.'); browser = null; });
+  return browser;
+}
+
 async function openPagina(id) {
+  await zorgVoorBrowser();
   const ctx = await browser.newContext({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
   await ctx.addInitScript((thema) => { try { localStorage.setItem('solisThema', thema); } catch (e) { /* niets */ } }, id);
   const page = await ctx.newPage();
@@ -61,6 +71,7 @@ async function render(id) {
   if (c.busy) return c.busy;
   c.busy = (async () => {
     try {
+      await zorgVoorBrowser();
       if (!c.page) c.page = await openPagina(id);
       await c.page.emulateMedia({ colorScheme: donker() ? 'dark' : 'light' });
       await c.page.waitForTimeout(350);
@@ -106,7 +117,12 @@ const server = http.createServer(async (req, res) => {
 
 (async () => {
   await haalPaginas();
-  browser = await chromium.launch();
+  await zorgVoorBrowser();
+  server.on('error', (e) => {
+    if (e.code === 'EADDRINUSE') console.error('Poort ' + POORT + ' is al in gebruik. De beeldserver draait waarschijnlijk al in een ander Terminal-venster.\nStop hem met:  kill $(lsof -ti :' + POORT + ')\nof gebruik een andere poort:  POORT=8790 node solis-beeld.js ' + DASH);
+    else console.error('Serverfout: ' + e.message);
+    process.exit(1);
+  });
   server.listen(POORT, '0.0.0.0', () => {
     console.log('Solis beeldserver draait op poort ' + POORT + ' en leest ' + DASH);
     console.log('Pagina\'s: ' + pages.join(', '));
@@ -114,6 +130,6 @@ const server = http.createServer(async (req, res) => {
   });
   // alvast de eerste pagina warm maken
   beeld(pages[0]).catch(() => {});
-  const stop = async () => { try { await browser.close(); } catch (e) { /* niets */ } process.exit(0); };
+  const stop = async () => { try { if (browser) await browser.close(); } catch (e) { /* niets */ } process.exit(0); };
   process.on('SIGINT', stop); process.on('SIGTERM', stop);
 })().catch((e) => { console.error('Starten mislukt: ' + e.message); process.exit(1); });
