@@ -65,5 +65,22 @@ assert CrashGuard(flag).crashed_before()
 t[0] += 30; assert not g.tick() and os.path.exists(flag)
 t[0] += 31; assert g.tick() and not os.path.exists(flag)
 g.start(); g.clear(); assert not CrashGuard(flag).crashed_before()
+# lichtbalk: 15 witte puntjes
+bar_root = tempfile.mkdtemp()
+for i in range(1, 16):
+    d = os.path.join(bar_root, 'led%d' % i); os.makedirs(d)
+    open(d + '/max_brightness', 'w').write('255'); open(d + '/brightness', 'w').write('0')
+bl = led.list_leds(bar_root)
+assert led.bar_leds('led', bl) == ['led%d' % i for i in range(1, 16)]
+cfg = dict(mode='balk', brightness=100, leds=bl, led_bar='led')
+lit = lambda c: sorted(int(n[3:]) for n, w in led.plan(c, cfg).items() if w['value'] > 0)
+assert lit('groen') == list(range(1, 16))
+assert lit('oranje') == list(range(5, 12))
+assert lit('rood') == [7, 8, 9]
+assert lit(None) == []
+sv = led.apply(led.plan('rood', cfg), bar_root)
+assert open(bar_root + '/led8/brightness').read() == '255' and open(bar_root + '/led1/brightness').read() == '0'
+assert led.bar_leds('x', bl) == []
+shutil.rmtree(bar_root)
 shutil.rmtree(root)
 print('test_led OK')

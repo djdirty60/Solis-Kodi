@@ -137,6 +137,7 @@ Most CoreELEC boxes have a light that Kodi can control through `/sys/class/leds`
 
 - **Three LEDs** (red, green, yellow): fill in the LED names.
 - **One RGB LED**: fill in the names of the red, green and blue channels.
+- **Light bar** (2.6.0): for boxes whose LEDs are all white, like the light bar of a Fire TV Cube 3 running CoreELEC (`led1` to `led15`). Green = all LEDs on, orange = the middle half, red = the middle 3. Fill in the start of the LED names (default `led`).
 - **One LED**: steady = green, slow blink (heartbeat) = orange, fast blink (timer) = red.
 
 Use *Show which LEDs this box has* to see the names. The light follows the traffic light of the Solis app every 30 seconds, switches off when the connection drops and (optionally) at night 23:00-07:00, and returns to its original state when Kodi quits. It needs a system where Kodi may write to `/sys/class/leds` (CoreELEC runs as root, so yes). It does **not** work when the box runs Android / Fire OS (apps cannot touch the light bar there). A Fire TV Cube that dual-boots into CoreELEC is a different case: it may work there if the kernel exposes the light bar as an LED. Run *Show which LEDs this box has* to find out; if it lists nothing, the light bar is not available as an LED.

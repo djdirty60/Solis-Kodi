@@ -95,7 +95,7 @@
         <setting id="led_mode" type="string" label="30081">
           <level>0</level>
           <default>uit</default>
-          <constraints><options><option label="30082">uit</option><option label="30083">drie</option><option label="30084">rgb</option><option label="30085">een</option></options></constraints>
+          <constraints><options><option label="30082">uit</option><option label="30083">drie</option><option label="30084">rgb</option><option label="30085">een</option><option label="30099">balk</option></options></constraints>
           <control type="list" format="string"><heading>30081</heading></control>
         </setting>
         <setting id="led_show" type="action" label="30095">
@@ -137,6 +137,11 @@
           <level>0</level>
           <default></default>
           <control type="edit" format="string"><heading>30092</heading></control>
+        </setting>
+        <setting id="led_bar" type="string" label="30100">
+          <level>0</level>
+          <default>led</default>
+          <control type="edit" format="string"><heading>30100</heading></control>
         </setting>
         <setting id="led_brightness" type="integer" label="30093">
           <level>0</level>

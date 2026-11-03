@@ -29,6 +29,7 @@ def read_settings():
             'led_yellow': a.getSetting('led_yellow'), 'led_r': a.getSetting('led_r'),
             'led_g': a.getSetting('led_g'), 'led_b': a.getSetting('led_b'),
             'led_single': a.getSetting('led_single'),
+            'led_bar': a.getSetting('led_bar') or 'led',
         },
     }
 

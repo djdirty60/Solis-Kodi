@@ -165,7 +165,38 @@ def plan(color, cfg):
                     off(n)
             else:
                 off(n)
+    elif mode == 'balk':
+        names = bar_leds(cfg.get('led_bar'), leds)
+        count = bar_count(color, len(names))
+        start = (len(names) - count) // 2   # in het midden, dus symmetrisch
+        for i, n in enumerate(names):
+            if start <= i < start + count:
+                on(n)
+            else:
+                off(n)
     return res
+
+
+def bar_leds(prefix, leds):
+    """De puntjes van een lichtbalk: namen als prefix + nummer (led1, led2, ...), op nummer gesorteerd."""
+    pre = (prefix or 'led').strip().lower()
+    found = []
+    for l in leds:
+        nm = l['name'].lower()
+        if nm.startswith(pre) and nm[len(pre):].isdigit():
+            found.append((int(nm[len(pre):]), l['name']))
+    return [n for _, n in sorted(found)]
+
+
+def bar_count(color, total):
+    """Aantal brandende puntjes: groen = alles, oranje = ongeveer de helft, rood = 3 (of minder)."""
+    if color == 'groen':
+        return total
+    if color == 'oranje':
+        return max(1, total // 2)
+    if color == 'rood':
+        return min(3, total)
+    return 0
 
 
 def apply(the_plan, root=DEFAULT_ROOT, saved=None):

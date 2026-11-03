@@ -238,3 +238,11 @@ msgstr "LEDs found"
 msgctxt "#30098"
 msgid "No LED found that Kodi can control. This works on CoreELEC boxes with a light; not on Fire TV or Android TV."
 msgstr "No LED found that Kodi can control. This works on CoreELEC boxes with a light; not on Fire TV or Android TV."
+
+msgctxt "#30099"
+msgid "Light bar (white LEDs: green = all, orange = half, red = 3)"
+msgstr "Light bar (white LEDs: green = all, orange = half, red = 3)"
+
+msgctxt "#30100"
+msgid "Light bar: start of the LED names (for example led)"
+msgstr "Light bar: start of the LED names (for example led)"
