@@ -79,6 +79,31 @@ On Fire TV or Android you can fetch the file with the **Downloader** app:
 
 Controls: left and right change page, Back closes the add-on.
 
+## Notifications on the TV
+
+Version 2.2.0 of the add-on includes a small background service. Every 30 seconds it asks the Solis app on your Homey for new messages and shows each one as a Kodi notification in the corner of the screen, also while you watch a film. Examples: "Washing machine done", "Negative electricity price, start the dishwasher", "Inverter offline".
+
+It starts by itself when Kodi starts. Old messages are never replayed: only messages that arrive after Kodi has started are shown.
+
+Settings (add-on settings, category **Notifications**):
+
+- **Notifications on the TV**: on or off (default on).
+- **Show each notification for (seconds)**: default 8.
+- **Do not notify while a video is playing**: off by default.
+- **Only warnings and good moments**: hides plain information messages.
+
+Needs a Solis voor Homey version that serves `/meldingen.json` (the newest app version).
+
+## Screensaver
+
+The separate add-on **Solis Dashboard Screensaver** shows the dashboard on the TV when nobody is using it. It rotates through the pages you choose (default Stroom, Zon, Details and Verbruik), refreshes the picture every few seconds and dims it at night (23:00 to 06:00). Any key closes it. If the Homey cannot be reached it shows a quiet black screen with a small message and tries again.
+
+1. Install it from the repository: **Add-ons, Install from repository, Solis Repository, Screensaver, Solis Dashboard Screensaver, Install**.
+2. Open its settings and enter the address of your Homey (port 8765), seconds per page and which pages to show.
+3. Go to **Settings, Interface, Screensaver**, choose **Solis Dashboard Screensaver** and set the **Wait time** (the inactivity time before it starts).
+
+Needs Solis voor Homey 3.35.0 or newer.
+
 ## How it works
 
 The Solis app on Homey serves everything on its dashboard port:
@@ -86,6 +111,7 @@ The Solis app on Homey serves everything on its dashboard port:
 - `/beeld/pages.json` lists the pages.
 - `/beeld/page/<page>.png` returns a 1920 x 1080 image of a page, drawn by a small rendering module in the app (no browser, no native libraries).
 - `/kodi.json` returns the data for the built-in pages.
+- `/meldingen.json?since=<id>` returns new notifications for the TV service.
 
 You can open the image URLs in any browser to check them, for example `http://HOMEY-IP:8765/beeld/page/stroom.png`.
 

@@ -62,3 +62,23 @@ msgstr "No connection to the image source. Check the Homey address in the settin
 msgctxt "#30022"
 msgid "Image from the Homey app (recommended, no computer needed)"
 msgstr "Image from the Homey app (recommended, no computer needed)"
+
+msgctxt "#30030"
+msgid "Notifications"
+msgstr "Notifications"
+
+msgctxt "#30031"
+msgid "Notifications on the TV"
+msgstr "Notifications on the TV"
+
+msgctxt "#30032"
+msgid "Show each notification for (seconds)"
+msgstr "Show each notification for (seconds)"
+
+msgctxt "#30033"
+msgid "Do not notify while a video is playing"
+msgstr "Do not notify while a video is playing"
+
+msgctxt "#30034"
+msgid "Only warnings and good moments"
+msgstr "Only warnings and good moments"

@@ -49,3 +49,12 @@ def download_page(host, port, page, path, timeout=20, prefix='', ext='jpg'):
     with open(path, 'wb') as fh:
         fh.write(body)
     return path
+
+
+def fetch_notifications(host, port, since=None, timeout=5):
+    """Nieuwe meldingen uit de Solis-app op de Homey (/meldingen.json)."""
+    url = base_url(host, port) + '/meldingen.json'
+    if since is not None:
+        url += '?since=%d' % int(since)
+    with urlopen(url, timeout=timeout) as resp:
+        return json.loads(resp.read().decode('utf-8'))

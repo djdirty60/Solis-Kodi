@@ -62,3 +62,23 @@ msgstr "Geen verbinding met de beeldbron. Controleer het Homey-adres in de inste
 msgctxt "#30022"
 msgid "Image from the Homey app (recommended, no computer needed)"
 msgstr "Beeld uit de Homey-app (aanbevolen, geen computer nodig)"
+
+msgctxt "#30030"
+msgid "Notifications"
+msgstr "Meldingen"
+
+msgctxt "#30031"
+msgid "Notifications on the TV"
+msgstr "Meldingen op de tv"
+
+msgctxt "#30032"
+msgid "Show each notification for (seconds)"
+msgstr "Elke melding tonen (seconden)"
+
+msgctxt "#30033"
+msgid "Do not notify while a video is playing"
+msgstr "Geen meldingen tijdens het afspelen van video"
+
+msgctxt "#30034"
+msgid "Only warnings and good moments"
+msgstr "Alleen waarschuwingen en goede momenten"

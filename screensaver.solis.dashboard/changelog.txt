@@ -1,0 +1,2 @@
+1.0.0
+- Eerste versie: het Solis-dashboard als schermbeveiliging, met wisselende pagina's en dimmen 's nachts.

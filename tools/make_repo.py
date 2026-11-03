@@ -14,7 +14,7 @@ import zipfile
 import xml.etree.ElementTree as ET
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ADDONS = ['repository.solis', 'script.solis.dashboard']
+ADDONS = ['repository.solis', 'script.solis.dashboard', 'screensaver.solis.dashboard']
 OUT = os.path.join(ROOT, 'repo')
 SKIP_DIRS = {'__pycache__', '.git'}
 

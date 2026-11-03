@@ -1,3 +1,7 @@
+2.2.0
+- Nieuw: meldingen op de tv. Een achtergrondservice haalt elke 30 seconden nieuwe meldingen op uit de nieuwste Solis-app en toont ze als Kodi-melding. Instellingen: aan/uit, hoe lang, niet tijdens video, alleen waarschuwingen.
+- Nieuw: aparte add-on 'Solis Dashboard Schermbeveiliging' (screensaver.solis.dashboard).
+
 2.1.1
 - Opgelost: bij het wisselen van pagina toonde Kodi soms een oude afbeelding (Stroom en Details door elkaar). Elke afbeelding krijgt nu een eigen bestandsnaam.
 

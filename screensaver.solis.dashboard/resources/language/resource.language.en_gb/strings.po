@@ -1,0 +1,32 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: en_GB\n"
+
+msgctxt "#30000"
+msgid "General"
+msgstr "General"
+
+msgctxt "#30001"
+msgid "Address of your Homey (IP or name)"
+msgstr "Address of your Homey (IP or name)"
+
+msgctxt "#30002"
+msgid "Dashboard port"
+msgstr "Dashboard port"
+
+msgctxt "#30003"
+msgid "Seconds per page"
+msgstr "Seconds per page"
+
+msgctxt "#30004"
+msgid "Pages (comma separated: stroom, zon, meer, inzicht, overzicht, dynamisch, verbruik, slim, instel)"
+msgstr "Pages (comma separated: stroom, zon, meer, inzicht, overzicht, dynamisch, verbruik, slim, instel)"
+
+msgctxt "#30005"
+msgid "Dim at night (23:00 to 06:00)"
+msgstr "Dim at night (23:00 to 06:00)"
+
+msgctxt "#30006"
+msgid "No connection to the Homey"
+msgstr "No connection to the Homey"

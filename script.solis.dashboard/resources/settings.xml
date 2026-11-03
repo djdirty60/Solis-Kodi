@@ -51,5 +51,30 @@
         </setting>
       </group>
     </category>
+    <category id="notifications" label="30030">
+      <group id="2">
+        <setting id="notify_enabled" type="boolean" label="30031">
+          <level>0</level>
+          <default>true</default>
+          <control type="toggle"/>
+        </setting>
+        <setting id="notify_seconds" type="integer" label="30032">
+          <level>0</level>
+          <default>8</default>
+          <constraints><minimum>3</minimum><step>1</step><maximum>30</maximum></constraints>
+          <control type="slider" format="integer"><popup>false</popup></control>
+        </setting>
+        <setting id="notify_quiet" type="boolean" label="30033">
+          <level>0</level>
+          <default>false</default>
+          <control type="toggle"/>
+        </setting>
+        <setting id="notify_warn_only" type="boolean" label="30034">
+          <level>0</level>
+          <default>false</default>
+          <control type="toggle"/>
+        </setting>
+      </group>
+    </category>
   </section>
 </settings>
