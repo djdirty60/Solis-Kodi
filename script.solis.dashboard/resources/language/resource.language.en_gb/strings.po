@@ -100,7 +100,7 @@ msgid "Mini card: show for (seconds)"
 msgstr "Mini card: show for (seconds)"
 
 msgctxt "#30052"
-msgid "Coloured edge around the screen (traffic light)"
+msgid "Coloured screen edge (may freeze Kodi, not recommended)"
 msgstr "Coloured edge around the screen (traffic light)"
 
 msgctxt "#30053"
@@ -162,3 +162,79 @@ msgstr "Options"
 msgctxt "#30070"
 msgid "OK = appliances   i = day   up/down = zoom   colour = page"
 msgstr "OK = appliances   i = day   up/down = zoom   colour = page"
+
+msgctxt "#30080"
+msgid "LED light of the box (traffic light)"
+msgstr "LED light of the box (traffic light)"
+
+msgctxt "#30081"
+msgid "Use the LED as traffic light"
+msgstr "Use the LED as traffic light"
+
+msgctxt "#30082"
+msgid "Off"
+msgstr "Off"
+
+msgctxt "#30083"
+msgid "Three LEDs (red, green, yellow)"
+msgstr "Three LEDs (red, green, yellow)"
+
+msgctxt "#30084"
+msgid "One RGB LED"
+msgstr "One RGB LED"
+
+msgctxt "#30085"
+msgid "One LED (steady = green, slow blink = orange, fast blink = red)"
+msgstr "One LED (steady = green, slow blink = orange, fast blink = red)"
+
+msgctxt "#30086"
+msgid "Name of the red LED"
+msgstr "Name of the red LED"
+
+msgctxt "#30087"
+msgid "Name of the green LED"
+msgstr "Name of the green LED"
+
+msgctxt "#30088"
+msgid "Name of the yellow LED"
+msgstr "Name of the yellow LED"
+
+msgctxt "#30089"
+msgid "Name of the red channel"
+msgstr "Name of the red channel"
+
+msgctxt "#30090"
+msgid "Name of the green channel"
+msgstr "Name of the green channel"
+
+msgctxt "#30091"
+msgid "Name of the blue channel"
+msgstr "Name of the blue channel"
+
+msgctxt "#30092"
+msgid "Name of the LED"
+msgstr "Name of the LED"
+
+msgctxt "#30093"
+msgid "LED brightness (%)"
+msgstr "LED brightness (%)"
+
+msgctxt "#30094"
+msgid "Switch the LED off at night (23:00-07:00)"
+msgstr "Switch the LED off at night (23:00-07:00)"
+
+msgctxt "#30095"
+msgid "Show which LEDs this box has"
+msgstr "Show which LEDs this box has"
+
+msgctxt "#30096"
+msgid "Experimental"
+msgstr "Experimental"
+
+msgctxt "#30097"
+msgid "LEDs found"
+msgstr "LEDs found"
+
+msgctxt "#30098"
+msgid "No LED found that Kodi can control. This works on CoreELEC boxes with a light; not on Fire TV or Android TV."
+msgstr "No LED found that Kodi can control. This works on CoreELEC boxes with a light; not on Fire TV or Android TV."

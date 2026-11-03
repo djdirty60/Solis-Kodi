@@ -101,7 +101,7 @@ msgstr "Mini-kaart: tonen (seconden)"
 
 msgctxt "#30052"
 msgid "Coloured edge around the screen (traffic light)"
-msgstr "Gekleurde rand om het scherm (verkeerslicht)"
+msgstr "Kleurrand op het scherm (kan Kodi laten vastlopen, niet aanbevolen)"
 
 msgctxt "#30053"
 msgid "Large text"
@@ -162,3 +162,79 @@ msgstr "Opties"
 msgctxt "#30070"
 msgid "OK = appliances   i = day   up/down = zoom   colour = page"
 msgstr "OK = apparaten   i = dag   omhoog/omlaag = zoom   kleur = pagina"
+
+msgctxt "#30080"
+msgid "LED light of the box (traffic light)"
+msgstr "Lampje van het kastje (verkeerslicht)"
+
+msgctxt "#30081"
+msgid "Use the LED as traffic light"
+msgstr "Lampje gebruiken als verkeerslicht"
+
+msgctxt "#30082"
+msgid "Off"
+msgstr "Uit"
+
+msgctxt "#30083"
+msgid "Three LEDs (red, green, yellow)"
+msgstr "Drie lampjes (rood, groen, geel)"
+
+msgctxt "#30084"
+msgid "One RGB LED"
+msgstr "Eén kleurenlampje (RGB)"
+
+msgctxt "#30085"
+msgid "One LED (steady = green, slow blink = orange, fast blink = red)"
+msgstr "Eén lampje (vast = groen, rustig knipperen = oranje, snel knipperen = rood)"
+
+msgctxt "#30086"
+msgid "Name of the red LED"
+msgstr "Naam van het rode lampje"
+
+msgctxt "#30087"
+msgid "Name of the green LED"
+msgstr "Naam van het groene lampje"
+
+msgctxt "#30088"
+msgid "Name of the yellow LED"
+msgstr "Naam van het gele lampje"
+
+msgctxt "#30089"
+msgid "Name of the red channel"
+msgstr "Naam van het rode kanaal"
+
+msgctxt "#30090"
+msgid "Name of the green channel"
+msgstr "Naam van het groene kanaal"
+
+msgctxt "#30091"
+msgid "Name of the blue channel"
+msgstr "Naam van het blauwe kanaal"
+
+msgctxt "#30092"
+msgid "Name of the LED"
+msgstr "Naam van het lampje"
+
+msgctxt "#30093"
+msgid "LED brightness (%)"
+msgstr "Helderheid van het lampje (%)"
+
+msgctxt "#30094"
+msgid "Switch the LED off at night (23:00-07:00)"
+msgstr "Lampje uit in de nacht (23:00-07:00)"
+
+msgctxt "#30095"
+msgid "Show which LEDs this box has"
+msgstr "Laat zien welke lampjes dit kastje heeft"
+
+msgctxt "#30096"
+msgid "Experimental"
+msgstr "Experimenteel"
+
+msgctxt "#30097"
+msgid "LEDs found"
+msgstr "Gevonden lampjes"
+
+msgctxt "#30098"
+msgid "No LED found that Kodi can control. This works on CoreELEC boxes with a light; not on Fire TV or Android TV."
+msgstr "Geen lampje gevonden dat Kodi kan bedienen. Dit werkt op CoreELEC-kastjes met een lampje; niet op Fire TV of Android TV."

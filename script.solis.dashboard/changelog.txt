@@ -1,3 +1,7 @@
+2.5.0
+- Nieuw: het lampje van het kastje als verkeerslicht (CoreELEC en andere Linux-kastjes met een bedienbaar lampje). Kies in de instellingen "Lampje van het kastje": drie lampjes, een RGB-lampje of een lampje (vast = groen, rustig knipperen = oranje, snel knipperen = rood). Met "Laat zien welke lampjes dit kastje heeft" zie je de namen. Lampje uit in de nacht en bij geen verbinding; bij afsluiten gaat het lampje terug naar hoe het was. Werkt niet op Fire TV of Android TV.
+- Veranderd: de kleurrand om het scherm kon Kodi laten vastlopen. Hij staat nu onder "Experimenteel", blijft standaard uit en wordt automatisch uitgezet als Kodi eerder is vastgelopen.
+
 2.4.0
 - Nieuw: mini-kaart rechtsonder met zon, huis en net, ook tijdens een film (RunScript(script.solis.dashboard,minikaart) aan een knop koppelen).
 - Nieuw: dunne gekleurde rand om het scherm volgens het verkeerslicht (groen, oranje, rood). Staat standaard uit.

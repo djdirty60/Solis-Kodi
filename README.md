@@ -125,11 +125,21 @@ All settings are under **TV extras** in the add-on settings.
   ```
 
   Needs Solis voor Homey 3.37.0 or newer (`/lucent.json`).
-- **Coloured edge (traffic light).** Optional thin coloured edge around the screen: green = good moment, orange = normal, red = better not. Off by default. Checked every 30 seconds by the background service.
+- **Coloured edge (experimental, not recommended).** Thin coloured edge around the screen. On some systems this can freeze Kodi, so it lives under *Experimental*, is off by default, and switches itself off after a crash (a flag file `edge_started` in the add-on data folder; delete it to try again).
 - **Colour buttons.** Red, green, yellow and blue jump to a page you choose (default Sun, Power, Dynamic, Usage). Whether the buttons reach Kodi depends on your remote and keymap.
 - **Day review.** Press `i` (Info) in the dashboard to see yesterday: generated, usage, bought, fed back, self-use and savings. Left and right go one day back or forward, Back closes it.
 - **Zoom.** Up zooms in on the top half of the page, down on the bottom half; the opposite key goes back.
 - **Large text.** Bigger labels on the built-in pages and the mini card; the image pages are shown slightly larger.
+
+## Box LED as traffic light (2.5.0)
+
+Most CoreELEC boxes have a light that Kodi can control through `/sys/class/leds`. Choose *LED light of the box* in the settings:
+
+- **Three LEDs** (red, green, yellow): fill in the LED names.
+- **One RGB LED**: fill in the names of the red, green and blue channels.
+- **One LED**: steady = green, slow blink (heartbeat) = orange, fast blink (timer) = red.
+
+Use *Show which LEDs this box has* to see the names. The light follows the traffic light of the Solis app every 30 seconds, switches off when the connection drops and (optionally) at night 23:00-07:00, and returns to its original state when Kodi quits. It needs a system where Kodi may write to `/sys/class/leds` (CoreELEC runs as root, so yes). It does **not** work when the box runs Android / Fire OS (apps cannot touch the light bar there). A Fire TV Cube that dual-boots into CoreELEC is a different case: it may work there if the kernel exposes the light bar as an LED. Run *Show which LEDs this box has* to find out; if it lists nothing, the light bar is not available as an LED.
 
 ## How it works
 

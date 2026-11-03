@@ -54,3 +54,12 @@ m = captured[0]
 assert m.labels[0].label == 'Zon  1.200 W' and m.labels[1].label == 'Huis  900 W' and m.labels[2].label == 'Terug  300 W'
 assert m.shown is False and m.closed is True                       # na afloop weer dicht
 print('edge + mini OK')
+
+# crash-guard: vlagbestand van een vorige vastloper => geen rand
+wins.clear(); settings['edge_light'] = 'true'
+tmp, _ = kodistubs.install(settings, abort_after=20)
+open(tmp + 'edge_started', 'w').write('1')
+importlib.reload(service); service.INTERVAL = 0.01
+service.run()
+assert wins == [], 'na een vastloper blijft de rand uit'
+print('edge guard OK')

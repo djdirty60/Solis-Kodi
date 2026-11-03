@@ -11,6 +11,15 @@ def run():
         from resources.lib import minikaart, tv
         minikaart.run(addon, tv.as_bool(addon.getSetting('big_text'), False))
         return
+    if len(sys.argv) > 1 and sys.argv[1] == 'leds':   # laat zien welke lampjes dit kastje heeft
+        import xbmcgui
+        from resources.lib import led
+        found = led.list_leds()
+        if found:
+            xbmcgui.Dialog().textviewer(addon.getLocalizedString(30097), '\n'.join(led.describe(found)))
+        else:
+            xbmcgui.Dialog().ok(addon.getLocalizedString(30097), addon.getLocalizedString(30098))
+        return
     path = addon.getAddonInfo('path')
     if (addon.getSetting('mode') or '2') == '1':
         from resources.lib.window import SolisWindow

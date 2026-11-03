@@ -59,11 +59,6 @@
           <constraints><minimum>3</minimum><step>1</step><maximum>60</maximum></constraints>
           <control type="slider" format="integer"><popup>false</popup></control>
         </setting>
-        <setting id="edge_light" type="boolean" label="30052">
-          <level>0</level>
-          <default>false</default>
-          <control type="toggle"/>
-        </setting>
         <setting id="big_text" type="boolean" label="30053">
           <level>0</level>
           <default>false</default>
@@ -92,6 +87,76 @@
           <default>verbruik</default>
           <constraints><options><option label="30060">zon</option><option label="30061">stroom</option><option label="30062">meer</option><option label="30063">inzicht</option><option label="30064">overzicht</option><option label="30065">dynamisch</option><option label="30066">verbruik</option><option label="30067">slim</option><option label="30068">instel</option></options></constraints>
           <control type="list" format="string"><heading>30057</heading></control>
+        </setting>
+      </group>
+    </category>
+    <category id="led" label="30080">
+      <group id="5">
+        <setting id="led_mode" type="string" label="30081">
+          <level>0</level>
+          <default>uit</default>
+          <constraints><options><option label="30082">uit</option><option label="30083">drie</option><option label="30084">rgb</option><option label="30085">een</option></options></constraints>
+          <control type="list" format="string"><heading>30081</heading></control>
+        </setting>
+        <setting id="led_show" type="action" label="30095">
+          <level>0</level>
+          <data>RunScript(script.solis.dashboard,leds)</data>
+          <control type="button" format="action"/>
+        </setting>
+        <setting id="led_red" type="string" label="30086">
+          <level>0</level>
+          <default></default>
+          <control type="edit" format="string"><heading>30086</heading></control>
+        </setting>
+        <setting id="led_green" type="string" label="30087">
+          <level>0</level>
+          <default></default>
+          <control type="edit" format="string"><heading>30087</heading></control>
+        </setting>
+        <setting id="led_yellow" type="string" label="30088">
+          <level>0</level>
+          <default></default>
+          <control type="edit" format="string"><heading>30088</heading></control>
+        </setting>
+        <setting id="led_r" type="string" label="30089">
+          <level>0</level>
+          <default></default>
+          <control type="edit" format="string"><heading>30089</heading></control>
+        </setting>
+        <setting id="led_g" type="string" label="30090">
+          <level>0</level>
+          <default></default>
+          <control type="edit" format="string"><heading>30090</heading></control>
+        </setting>
+        <setting id="led_b" type="string" label="30091">
+          <level>0</level>
+          <default></default>
+          <control type="edit" format="string"><heading>30091</heading></control>
+        </setting>
+        <setting id="led_single" type="string" label="30092">
+          <level>0</level>
+          <default></default>
+          <control type="edit" format="string"><heading>30092</heading></control>
+        </setting>
+        <setting id="led_brightness" type="integer" label="30093">
+          <level>0</level>
+          <default>50</default>
+          <constraints><minimum>5</minimum><step>5</step><maximum>100</maximum></constraints>
+          <control type="slider" format="integer"><popup>false</popup></control>
+        </setting>
+        <setting id="led_night_off" type="boolean" label="30094">
+          <level>0</level>
+          <default>true</default>
+          <control type="toggle"/>
+        </setting>
+      </group>
+    </category>
+    <category id="experimental" label="30096">
+      <group id="6">
+        <setting id="edge_light" type="boolean" label="30052">
+          <level>0</level>
+          <default>false</default>
+          <control type="toggle"/>
         </setting>
       </group>
     </category>
