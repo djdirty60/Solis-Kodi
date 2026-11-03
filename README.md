@@ -1,46 +1,112 @@
-# Solis Dashboard voor Kodi
+# Solis Dashboard for Kodi
 
-Kodi-add-on voor de Homey-app **Solis voor Homey**. Toont je zonnepanelen op de tv, in drie varianten:
+A Kodi / CoreELEC add-on that puts your solar dashboard on the TV. It is the companion to the Homey app **Solis voor Homey** (Solis inverter, Homey Pro, P1 dongle, dynamic electricity prices).
 
-1. **Beeld uit de Homey-app (standaard)**: de Solis-app op je Homey tekent het dashboard zelf als afbeelding, in dezelfde stijl als op de Mac. Geen computer nodig. Vereist Solis voor Homey **3.35.0 of nieuwer**.
-2. **Beeld van de beeldserver**: het echte webdashboard als beeld, pixel voor pixel. Hiervoor draait op een computer die aan blijft de **Solis beeldserver** (map `beeld-server`).
-3. **Ingebouwde pagina's**: 7 eigen Kodi-pagina's. Vereist Solis voor Homey **3.34.0 of nieuwer**.
+Made by Wilfried van der Voort. The dashboard itself is in Dutch.
 
-Gemaakt door Wilfried van der Voort.
+![Power flow page](docs/power.png)
 
-## Stappen
-1. Installeer Solis voor Homey 3.35.0 of nieuwer op je Homey.
-2. Installeer de add-on in Kodi (hieronder).
-3. Zet bij de instellingen van de add-on het adres van je Homey (poort 8765).
-4. Start de add-on. Links en rechts wisselt van pagina, Terug sluit af.
+## What it does
 
-## Installeren op CoreELEC / Kodi (met automatische updates)
-Je installeert één keer de **Solis Repository**. Daarna haalt Kodi de add-on zelf op en werkt hem vanzelf bij.
+The Solis app on your Homey draws nine dashboard pages as images, in the same dark style as the web dashboard on a Mac. The add-on shows them full screen on the TV, refreshes them every few seconds, and lets you flip between pages with left and right on the remote. No computer, browser or extra server is needed.
 
-1. Download `repository.solis-1.0.0.zip` uit deze repository en pak hem **niet** uit.
-2. Zet het bestand op je CoreELEC, bijvoorbeeld via Finder: **Ga → Verbind met server** → `smb://coreelec` → map **Userdata**.
-3. Zet in Kodi **Instellingen → Systeem → Add-ons → Onbekende bronnen** aan.
-4. Kies **Add-ons → Installeren vanuit zip-bestand → Home-map → Userdata** en kies `repository.solis-1.0.0.zip`.
-5. Kies **Add-ons → Installeren vanuit repository → Solis Repository → Programma-add-ons → Solis Dashboard → Installeren**.
-6. Ga naar **Add-ons → Programma-add-ons → Solis Dashboard → Configureren**.
+| Page | What you see |
+| --- | --- |
+| **Zon** (Sun) | Sun arc for today, output per hour, big live wattage, today / price / advice / month tiles |
+| **Stroom** (Power) | Panels, house and grid as three rings with flowing dots, plus today's yield sparkline, price, smart advice and month totals |
+| **Details** | Generation versus consumption over the day, today's score, hourly price chart with cheap and expensive hours, tracked appliances, CO2 savings |
+| **Inzicht** (Insight) | Last 14 days, 3-day forecast with weather icons, payback time, shade and dirt detection, feed-in value, charging tip |
+| **Overzicht** (Overview) | Year totals, self-consumption ring, value of your solar power, month-by-month table, "what if" comparison, home battery estimate |
+| **Dynamisch** (Dynamic) | Countdown to a dynamic contract, tomorrow's hourly prices, cheapest and most expensive 3 hours, what dynamic would cost you, smart shifting |
+| **Verbruik** (Usage) | Consumption today, month and year, 30-day stacked chart (own solar versus grid), hourly usage, appliances |
+| **Slim** (Smart) | Twelve smart cards: standby usage, yield versus normal, shade, monthly budget, live cost per hour, grid voltage, end of net metering, goal streak, CO2 |
+| **Opties** (Settings) | Read-only overview of the app settings: contract, installation, notifications, control, connections |
 
-Updates komen daarna vanzelf. Wil je meteen kijken of er een nieuwe versie is? Ga naar **Add-ons**, open het menu en kies **Controleer op updates** (of ga naar Instellingen, Add-ons, Automatisch bijwerken).
+<table>
+  <tr>
+    <td><img src="docs/sun.png" alt="Sun page"></td>
+    <td><img src="docs/details.png" alt="Details page"></td>
+  </tr>
+  <tr>
+    <td><img src="docs/insight.png" alt="Insight page"></td>
+    <td><img src="docs/overview.png" alt="Overview page"></td>
+  </tr>
+  <tr>
+    <td><img src="docs/dynamic.png" alt="Dynamic page"></td>
+    <td><img src="docs/usage.png" alt="Usage page"></td>
+  </tr>
+  <tr>
+    <td><img src="docs/smart.png" alt="Smart page"></td>
+    <td><img src="docs/settings.png" alt="Settings page"></td>
+  </tr>
+</table>
 
-Op een Fire TV of Android-apparaat kun je het bestand ook ophalen met de app **Downloader**:
+Screenshots use sample data.
+
+## Display modes
+
+Choose one in the add-on settings under **Display**:
+
+1. **Image from the Homey app** (default, recommended). Needs Solis voor Homey **3.35.0 or newer**. The app draws the pages itself, so nothing else has to run.
+2. **Image from the image server.** The real web dashboard, pixel for pixel, rendered by a small Node.js server (folder `beeld-server`) on a computer that stays on. Use this if you want the exact web page.
+3. **Built-in pages.** Seven simple native Kodi pages drawn with Kodi controls. Needs Solis voor Homey **3.34.0 or newer**.
+
+## Requirements
+
+- Kodi 19 or newer (tested on CoreELEC with Kodi 22), Python 3
+- The Homey app **Solis voor Homey** on a Homey Pro, reachable from the TV on your local network (default port **8765**)
+
+## Install (with automatic updates)
+
+Install the **Solis Repository** once. After that Kodi fetches and updates the add-on by itself.
+
+1. Download `repository.solis-1.0.0.zip` from this repository. Do not unzip it.
+2. Put the file on your device, for example over SMB to the `Userdata` folder of CoreELEC.
+3. In Kodi enable **Settings, System, Add-ons, Unknown sources**.
+4. Choose **Add-ons, Install from zip file**, pick the file.
+5. Choose **Add-ons, Install from repository, Solis Repository, Program add-ons, Solis Dashboard, Install**.
+6. Open **Add-ons, Program add-ons, Solis Dashboard, Configure**.
+
+On Fire TV or Android you can fetch the file with the **Downloader** app:
 `https://github.com/djdirty60/Solis-Kodi/raw/main/repository.solis-1.0.0.zip`
 
-## Instellingen
-- **Weergave**: echt dashboard als beeld of ingebouwde pagina's.
-- **Adres en poort van de beeldserver** (voor het beeld).
-- **Adres en poort van het dashboard** (alleen voor de ingebouwde pagina's; poort 8765).
-- **Verversen** in seconden, **automatisch wisselen** (0 = uit), **startpagina**.
+## Settings
 
-## Veiligheid
-Het dashboard en de beeldserver hebben geen wachtwoord. Zet geen poorten open op internet; gebruik alles op je eigen netwerk.
+- **Display**: image from the Homey app, image from the image server, or built-in pages.
+- **Dashboard address and port**: the IP address of your Homey and port 8765.
+- **Image server address and port**: only for display mode 2.
+- **Refresh every (seconds)**, **switch page automatically every (seconds, 0 = off)** and **start page**.
 
-## Een nieuwe versie uitbrengen (voor de maker)
-1. Verhoog het versienummer in `script.solis.dashboard/addon.xml` en voeg een regel toe in `changelog.txt`.
-2. Draai `python3 tools/make_repo.py`.
-3. Commit en push, inclusief de map `repo`. Binnen ongeveer een uur ziet Kodi de update, meestal sneller.
+Controls: left and right change page, Back closes the add-on.
 
-De beeldserver (map `beeld-server`) wordt niet door Kodi bijgewerkt. Die draait op je computer; vervang daar de bestanden als er een nieuwe versie is.
+## How it works
+
+The Solis app on Homey serves everything on its dashboard port:
+
+- `/beeld/pages.json` lists the pages.
+- `/beeld/page/<page>.png` returns a 1920 x 1080 image of a page, drawn by a small rendering module in the app (no browser, no native libraries).
+- `/kodi.json` returns the data for the built-in pages.
+
+You can open the image URLs in any browser to check them, for example `http://HOMEY-IP:8765/beeld/page/stroom.png`.
+
+## Troubleshooting
+
+- **"No connection to the image source"**: check the Homey address in the add-on settings, and that the Solis app is 3.35.0 or newer.
+- **Old picture stays on screen**: update the add-on to 2.1.1 or newer.
+- **Inverter shows "offline" at night**: that is normal. The inverter sleeps without sun.
+
+## Security
+
+The dashboard and the image server have no password and are read-only. Do not expose their ports to the internet; use them on your own network.
+
+## Releasing a new version (for the maker)
+
+1. Raise the version in `script.solis.dashboard/addon.xml` and add a line to `changelog.txt`.
+2. Run `python3 tools/make_repo.py`.
+3. Commit and push, including the `repo` folder. Kodi usually sees the update within the hour.
+
+The image server (folder `beeld-server`) is not updated by Kodi; replace its files on your computer when there is a new version.
+
+## License
+
+MIT
