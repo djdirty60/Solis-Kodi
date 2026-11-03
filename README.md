@@ -13,15 +13,20 @@ Gemaakt door Wilfried van der Voort.
 3. Vul bij de instellingen van de add-on het adres van je Mac in.
 4. Start de add-on. Links en rechts wisselt van pagina, Terug sluit af.
 
-## Installeren op CoreELEC / Kodi
-1. Download `script.solis.dashboard-2.0.0.zip` uit deze repository en pak hem **niet** uit.
+## Installeren op CoreELEC / Kodi (met automatische updates)
+Je installeert één keer de **Solis Repository**. Daarna haalt Kodi de add-on zelf op en werkt hem vanzelf bij.
+
+1. Download `repository.solis-1.0.0.zip` uit deze repository en pak hem **niet** uit.
 2. Zet het bestand op je CoreELEC, bijvoorbeeld via Finder: **Ga → Verbind met server** → `smb://coreelec` → map **Userdata**.
 3. Zet in Kodi **Instellingen → Systeem → Add-ons → Onbekende bronnen** aan.
-4. Kies **Add-ons → Installeren vanuit zip-bestand → Home-map → Userdata** en kies het zip-bestand.
-5. Ga naar **Add-ons → Programma-add-ons → Solis Dashboard → Configureren**.
+4. Kies **Add-ons → Installeren vanuit zip-bestand → Home-map → Userdata** en kies `repository.solis-1.0.0.zip`.
+5. Kies **Add-ons → Installeren vanuit repository → Solis Repository → Programma-add-ons → Solis Dashboard → Installeren**.
+6. Ga naar **Add-ons → Programma-add-ons → Solis Dashboard → Configureren**.
+
+Updates komen daarna vanzelf. Wil je meteen kijken of er een nieuwe versie is? Ga naar **Add-ons**, open het menu en kies **Controleer op updates** (of ga naar Instellingen, Add-ons, Automatisch bijwerken).
 
 Op een Fire TV of Android-apparaat kun je het bestand ook ophalen met de app **Downloader**:
-`https://github.com/djdirty60/Solis-Kodi/raw/main/script.solis.dashboard-2.0.0.zip`
+`https://github.com/djdirty60/Solis-Kodi/raw/main/repository.solis-1.0.0.zip`
 
 ## Instellingen
 - **Weergave**: echt dashboard als beeld of ingebouwde pagina's.
@@ -31,3 +36,10 @@ Op een Fire TV of Android-apparaat kun je het bestand ook ophalen met de app **D
 
 ## Veiligheid
 Het dashboard en de beeldserver hebben geen wachtwoord. Zet geen poorten open op internet; gebruik alles op je eigen netwerk.
+
+## Een nieuwe versie uitbrengen (voor de maker)
+1. Verhoog het versienummer in `script.solis.dashboard/addon.xml` en voeg een regel toe in `changelog.txt`.
+2. Draai `python3 tools/make_repo.py`.
+3. Commit en push, inclusief de map `repo`. Binnen ongeveer een uur ziet Kodi de update, meestal sneller.
+
+De beeldserver (map `beeld-server`) wordt niet door Kodi bijgewerkt. Die draait op je computer; vervang daar de bestanden als er een nieuwe versie is.
