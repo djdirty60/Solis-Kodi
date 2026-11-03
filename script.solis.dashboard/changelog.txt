@@ -1,0 +1,2 @@
+1.0.0
+- Eerste versie: 7 pagina's (Nu, Overzicht, Prijzen, Slim, Verbruik, Plan, Opties) met gegevens uit Solis voor Homey.

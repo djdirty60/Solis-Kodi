@@ -1,0 +1,37 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: nl_NL\n"
+
+msgctxt "#30000"
+msgid "General"
+msgstr "Algemeen"
+
+msgctxt "#30001"
+msgid "Dashboard address (IP or name of your Homey)"
+msgstr "Adres van het dashboard (IP of naam van je Homey)"
+
+msgctxt "#30002"
+msgid "Dashboard port"
+msgstr "Poort van het dashboard"
+
+msgctxt "#30003"
+msgid "Refresh every (seconds)"
+msgstr "Verversen elke (seconden)"
+
+msgctxt "#30004"
+msgid "Switch page automatically every (seconds, 0 = off)"
+msgstr "Automatisch van pagina wisselen elke (seconden, 0 = uit)"
+
+msgctxt "#30005"
+msgid "Start page"
+msgstr "Startpagina"
+
+msgctxt "#30010"
+msgid "No connection to the dashboard. Check the address in the add-on settings."
+msgstr "Geen verbinding met het dashboard. Controleer het adres bij de instellingen van de add-on."
+
+msgctxt "#30011"
+msgid "Use left and right to switch pages, Back to close"
+msgstr "Links en rechts wisselen van pagina, Terug sluit af"
+
