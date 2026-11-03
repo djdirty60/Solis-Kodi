@@ -72,6 +72,14 @@ class SolisImageWindow(xbmcgui.WindowXML):
         except Exception:  # noqa: BLE001
             pass
 
+    def _opruimen(self, nr):
+        """Verwijdert oude tijdelijke afbeeldingen."""
+        for n in range(max(0, nr - 2), nr + 1):
+            try:
+                os.remove(os.path.join(self._tmp, 'solis_beeld_%d.%s' % (n, self.ext)))
+            except OSError:
+                pass
+
     def _page_title(self):
         p = self.pages[self.index]
         return '%s  (%d/%d)' % (NAMES.get(p, p), self.index + 1, len(self.pages))
@@ -99,7 +107,7 @@ class SolisImageWindow(xbmcgui.WindowXML):
                     page = self.pages[self.index]
                     self._want = False
                 last = now
-                self._flip = 1 - self._flip
+                self._flip += 1   # elke afbeelding een eigen bestandsnaam: Kodi onthoudt anders de oude
                 path = os.path.join(self._tmp, 'solis_beeld_%d.%s' % (self._flip, self.ext))
                 try:
                     client.download_page(self.host, self.port, page, path, prefix=self.prefix, ext=self.ext)
@@ -107,6 +115,7 @@ class SolisImageWindow(xbmcgui.WindowXML):
                         still = page == self.pages[self.index]
                     if still:
                         self.getControl(20).setImage(path, False)
+                        self._opruimen(self._flip - 3)
                     self._set(14, '')
                 except Exception as exc:  # noqa: BLE001
                     xbmc.log('Solis dashboard: beeld ophalen mislukt: %s' % exc, xbmc.LOGWARNING)

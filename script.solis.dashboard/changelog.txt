@@ -1,3 +1,6 @@
+2.1.1
+- Opgelost: bij het wisselen van pagina toonde Kodi soms een oude afbeelding (Stroom en Details door elkaar). Elke afbeelding krijgt nu een eigen bestandsnaam.
+
 2.1.0
 - Nieuw: het dashboard-beeld komt nu rechtstreeks uit de Solis-app op je Homey (3.35.0 of nieuwer). Geen Mac of beeldserver meer nodig. Dit is de nieuwe standaard (Weergave: Beeld uit de Homey-app).
 - De beeldserver en de ingebouwde pagina's blijven beschikbaar.

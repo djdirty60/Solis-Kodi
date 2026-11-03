@@ -21,7 +21,7 @@
     </assets>
   </extension>
 </addon>
-<addon id="script.solis.dashboard" name="Solis Dashboard" version="2.1.0" provider-name="Wilfried van der Voort">
+<addon id="script.solis.dashboard" name="Solis Dashboard" version="2.1.1" provider-name="Wilfried van der Voort">
   <requires>
     <import addon="xbmc.python" version="3.0.0"/>
   </requires>
