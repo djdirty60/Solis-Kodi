@@ -1,7 +1,11 @@
-SOLIS VOOR HOMEY - versie 3.50.0 (v111)
+SOLIS VOOR HOMEY - versie 3.51.0 (v112)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v111.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v112.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.51.0:
+- Dashboard (telefoon en computer), 'Plan en sturing': achter elk gepland apparaat staat een kruisje. Daarmee annuleer je de planning: een klaargezet apparaat wordt niet gestart en de flow 'Beste moment' gaat deze keer niet af. Daarna maakt de app gewoon weer een nieuwe planning. Je hebt de pincode nodig (dezelfde als voor de tv, bij Instellingen, Dashboard).
+- 'Klaargezet' staat erbij als een apparaat via 'Zet apparaat klaar' wacht op het beste moment.
 
 Nieuw in 3.50.0:
 - Nieuwe instelling (Apparaten en planner): 'Stekker uitzetten als de wasmachine, vaatwasser of droger klaar is'. Een half uur na het einde van de beurt zet de app de stekker uit. Alleen voor wasmachine, vaatwasser en droger, en alleen als het apparaat dan bijna niets meer gebruikt. Staat standaard uit.
