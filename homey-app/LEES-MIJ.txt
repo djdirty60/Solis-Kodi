@@ -1,7 +1,11 @@
-SOLIS VOOR HOMEY - versie 3.43.0 (v94)
+SOLIS VOOR HOMEY - versie 3.44.0 (v96)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v94.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v96.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.44.0:
+- De app kijkt zelf op GitHub of er een nieuwere versie is en stuurt dan één melding (ook te zien bij Opties, App-versie).
+- Kids-vraag: het gekozen antwoord is oranje met een witte rand; omhoog of terug stopt de vraag.
 
 Nieuw in 3.43.0:
 - Eén blijvende verbinding met de datalogger in plaats van elke 20 seconden opnieuw verbinden (minder "omvormer niet bereikbaar").

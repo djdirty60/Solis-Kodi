@@ -16,6 +16,9 @@ struct ViewerView: View {
     // Kids-quiz: nil = nog niet aan het kiezen, 0...2 = gekozen antwoord (A, B, C)
     @State private var quizSel: Int? = nil
     @State private var quizDone: Bool = false
+    // Melding als er een nieuwere versie op GitHub staat
+    @State private var newVersionText: String? = nil
+    @State private var showUpdateBanner: Bool = false
     @FocusState private var viewerFocused: Bool
     @FocusState private var menuFocus: MenuItem?
 
@@ -58,6 +61,20 @@ struct ViewerView: View {
                     }
                 }
 
+            if showUpdateBanner, let nieuw = newVersionText, !showMenu {
+                VStack {
+                    Text(nieuw)
+                        .font(.system(size: 30, weight: .semibold))
+                        .foregroundColor(.black)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 36)
+                        .padding(.vertical, 20)
+                        .background(RoundedRectangle(cornerRadius: 20).fill(Color(red: 1.0, green: 0.62, blue: 0.11)))
+                        .padding(.top, 50)
+                    Spacer()
+                }
+            }
+
             if showMenu {
                 menuLayer
             }
@@ -68,6 +85,15 @@ struct ViewerView: View {
             if !open { viewerFocused = true }
         }
         .onAppear { viewerFocused = true }
+        .task {
+            // eens bij het opstarten kijken of er een nieuwere versie is; de melding staat 20 seconden in beeld
+            if let text = await UpdateCheck.message() {
+                newVersionText = text
+                showUpdateBanner = true
+                try? await Task.sleep(nanoseconds: 20_000_000_000)
+                showUpdateBanner = false
+            }
+        }
         .task(id: config) {
             await refresh()
             while !Task.isCancelled {
@@ -123,6 +149,13 @@ struct ViewerView: View {
                 Text(updateText)
                     .font(.system(size: 34))
                     .foregroundColor(Color.white.opacity(0.85))
+                if let nieuw = newVersionText {
+                    Text(nieuw)
+                        .font(.system(size: 30, weight: .semibold))
+                        .foregroundColor(Color(red: 1.0, green: 0.62, blue: 0.11))
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: 1100)
+                }
                 VStack(spacing: 28) {
                     Button { showMenu = false } label: { MenuButtonLabel(title: "Doorgaan") }
                         .buttonStyle(.plain)

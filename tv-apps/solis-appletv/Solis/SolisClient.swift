@@ -117,3 +117,27 @@ struct SolisClient {
         return "Er ging iets mis: \(error.localizedDescription)"
     }
 }
+
+/// Kijkt op GitHub (tv-apps/versie.json) of er een nieuwere Apple TV-versie is.
+/// Een zelf geïnstalleerde app mag zichzelf op tvOS niet bijwerken: we tonen alleen een melding.
+enum UpdateCheck {
+    private struct Root: Decodable { let appletv: Entry? }
+    private struct Entry: Decodable { let build: Int; let versie: String?; let nieuw: String? }
+
+    /// Geeft een tekst terug als er een nieuwere versie is, anders nil.
+    static func message() async -> String? {
+        guard let url = URL(string: "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/tv-apps/versie.json?t=\(Int(Date().timeIntervalSince1970))") else { return nil }
+        var request = URLRequest(url: url)
+        request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        request.timeoutInterval = 10
+        guard let result = try? await URLSession.shared.data(for: request),
+              (result.1 as? HTTPURLResponse)?.statusCode == 200,
+              let root = try? JSONDecoder().decode(Root.self, from: result.0),
+              let entry = root.appletv else { return nil }
+        let current = Int(Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "") ?? 0
+        guard entry.build > current else { return nil }
+        var text = "Nieuwe versie " + (entry.versie ?? String(entry.build)) + " staat op GitHub. Zet hem via KTB op de Apple TV."
+        if let nieuw = entry.nieuw, !nieuw.isEmpty { text += "\n" + nieuw }
+        return text
+    }
+}

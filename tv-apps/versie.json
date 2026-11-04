@@ -1,0 +1,19 @@
+{
+  "android": {
+    "versionCode": 2,
+    "versionName": "1.1.0",
+    "apk": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/tv-apps/downloads/Solis-AndroidTV.apk",
+    "nieuw": "Kids-vraag beantwoorden met de afstandsbediening."
+  },
+  "appletv": {
+    "build": 3,
+    "versie": "v3",
+    "ipa": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/tv-apps/downloads/Solis-AppleTV-v3.ipa",
+    "nieuw": "Kids-vraag beantwoorden met de afstandsbediening."
+  },
+  "homey": {
+    "version": "3.44.0",
+    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v96.zip",
+    "nieuw": "Melding bij nieuwe versies, duidelijker gekozen antwoord bij de Kids-vraag."
+  }
+}

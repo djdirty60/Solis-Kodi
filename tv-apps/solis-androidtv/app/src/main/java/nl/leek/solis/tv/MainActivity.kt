@@ -37,6 +37,7 @@ class MainActivity : Activity() {
         viewer = v
         setContentView(v.root)
         v.start()
+        Updater.checkOnStart(this)
     }
 
     override fun onPause() {
