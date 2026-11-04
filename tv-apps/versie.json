@@ -12,8 +12,8 @@
     "nieuw": "Meldt nieuwe versies. Kids-vraag: Menu of omhoog stopt de vraag."
   },
   "homey": {
-    "version": "3.48.0",
-    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v108.zip",
-    "nieuw": "Verbinding met de datalogger betrouwbaarder; dashboard start zelf opnieuw als de poort na een update nog bezet was."
+    "version": "3.49.0",
+    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v109.zip",
+    "nieuw": "Neemt het geleerde gemiddelde over uit de app Power Profiler, zolang Solis zelf nog aan het leren is."
   }
 }

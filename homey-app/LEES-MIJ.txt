@@ -1,7 +1,11 @@
-SOLIS VOOR HOMEY - versie 3.48.0 (v108)
+SOLIS VOOR HOMEY - versie 3.49.0 (v109)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v108.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v109.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.49.0:
+- Heb je de Homey-app 'Power Profiler'? Dan neemt Solis het geleerde gemiddelde daaruit over (duur en kWh per beurt), zolang Solis zelf nog geen 3 eigen beurten heeft gezien. Het Profiler-apparaat moet heten: '<naam van je apparaat> Profiler' (bijvoorbeeld 'Vaatwasser Profiler') en minstens 3 beurten kennen. Op het dashboard staat dan 'uit Power Profiler'. Daarna gaan de eigen beurten van Solis voor.
+- Apparaten volgen: een spatie aan het eind van een apparaatnaam in Homey maakt niet meer uit, en een Profiler-apparaat wordt nooit per ongeluk als stekker gebruikt.
 
 Nieuw in 3.48.0:
 - Verbinding met de datalogger (S2-WL-ST) betrouwbaarder. De logger laat maar één verbinding tegelijk toe en ruimt een half kapotte verbinding niet zelf op. De app zorgt nu dat er nooit een tweede of losgelaten verbinding blijft hangen, breekt een kapotte verbinding hard af (zodat de logger meteen weer vrij is), wacht minstens 0,4 seconde tussen twee vragen (Solis schrijft meer dan 0,3 s voor) en bouwt na 3 mislukte pogingen de verbinding helemaal opnieuw op.
