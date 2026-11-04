@@ -13,6 +13,9 @@ struct ViewerView: View {
     @State private var showMenu: Bool = false
     @State private var requestID: Int = 0
     @State private var lastUpdate: Date? = nil
+    // Kids-quiz: nil = nog niet aan het kiezen, 0...2 = gekozen antwoord (A, B, C)
+    @State private var quizSel: Int? = nil
+    @State private var quizDone: Bool = false
     @FocusState private var viewerFocused: Bool
     @FocusState private var menuFocus: MenuItem?
 
@@ -23,6 +26,16 @@ struct ViewerView: View {
                 .focused($viewerFocused)
                 .onMoveCommand { direction in
                     guard !showMenu else { return }
+                    // Kids-pagina: tijdens het kiezen wisselen links/rechts van antwoord in plaats van pagina
+                    if currentPage == "kids", let sel = quizSel, !quizDone {
+                        switch direction {
+                        case .left: quizSel = (sel + 2) % 3
+                        case .right: quizSel = (sel + 1) % 3
+                        default: return
+                        }
+                        Task { await refresh(reloadPages: false) }
+                        return
+                    }
                     switch direction {
                     case .left: step(-1)
                     case .right: step(1)
@@ -30,7 +43,14 @@ struct ViewerView: View {
                     }
                 }
                 .onTapGesture {
-                    if !showMenu { Task { await refresh() } }
+                    guard !showMenu else { return }
+                    if currentPage == "kids" {
+                        // OK: beginnen met kiezen, dan antwoord geven, dan opnieuw
+                        if quizSel == nil { quizSel = 0; quizDone = false } else if !quizDone { quizDone = true } else { quizSel = nil; quizDone = false }
+                        Task { await refresh(reloadPages: false) }
+                    } else {
+                        Task { await refresh() }
+                    }
                 }
 
             if showMenu {
@@ -143,9 +163,13 @@ struct ViewerView: View {
 
     // MARK: - Gedrag
 
+    private var currentPage: String? { pages.indices.contains(index) ? pages[index] : nil }
+
     private func step(_ delta: Int) {
         guard pages.count > 1 else { return }
         index = (index + delta + pages.count) % pages.count
+        quizSel = nil
+        quizDone = false
         Task { await refresh(reloadPages: false) }
     }
 
@@ -170,7 +194,12 @@ struct ViewerView: View {
             }
             guard pages.indices.contains(index) else { return }
             let page = pages[index]
-            let picture = try await client.image(for: page)
+            var query: [URLQueryItem] = []
+            if page == "kids", let sel = quizSel {
+                query.append(URLQueryItem(name: "keuze", value: String(sel)))
+                if quizDone { query.append(URLQueryItem(name: "klaar", value: "1")) }
+            }
+            let picture = try await client.image(for: page, query: query)
             if myID != requestID { return }
             image = picture
             errorText = nil

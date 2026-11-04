@@ -52,8 +52,8 @@ object Net {
     }
 
     /** Het plaatje van een pagina (1920x1080 PNG). */
-    fun fetchBitmap(base: String, page: String): Bitmap {
-        val c = open("$base/beeld/page/$page.png", 4000, 15000)
+    fun fetchBitmap(base: String, page: String, query: String = ""): Bitmap {
+        val c = open("$base/beeld/page/$page.png$query", 4000, 15000)
         try {
             if (c.responseCode != 200) throw IOException("HTTP ${c.responseCode}")
             val bmp = c.inputStream.use { BitmapFactory.decodeStream(it) }

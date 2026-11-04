@@ -11,8 +11,18 @@ android {
         applicationId = "nl.leek.solis.tv"
         minSdk = 23
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0.0"
+        versionCode = 2
+        versionName = "1.1.0"
+    }
+
+    // Altijd dezelfde handtekening, zodat een nieuwe versie gewoon over de oude heen installeert.
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("solis-debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
     }
 
     buildTypes {

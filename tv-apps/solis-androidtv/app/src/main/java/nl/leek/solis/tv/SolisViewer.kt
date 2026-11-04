@@ -46,6 +46,10 @@ class SolisViewer(
     private var sinceRotate = 0
     private var autoRotate = false
 
+    // Kids-quiz: null = nog niet aan het kiezen; 0..2 = gekozen antwoord (A, B, C)
+    private var quizSel: Int? = null
+    private var quizDone = false
+
     private val names = mapOf(
         "zon" to "Zon", "stroom" to "Stroom", "meer" to "Details", "inzicht" to "Inzicht",
         "overzicht" to "Overzicht", "dynamisch" to "Dynamisch", "verbruik" to "Verbruik", "slim" to "Slim",
@@ -59,7 +63,7 @@ class SolisViewer(
             if (!running) return
             sinceRefresh++
             sinceRotate++
-            if (autoRotate && pages.size > 1 && sinceRotate >= rotateSeconds()) {
+            if (autoRotate && quizSel == null && pages.size > 1 && sinceRotate >= rotateSeconds()) {
                 step(1, false)
             } else if (sinceRefresh >= 30) {
                 refresh()
@@ -126,6 +130,7 @@ class SolisViewer(
     /** Geeft true als de toets is verwerkt. */
     fun handleKey(keyCode: Int): Boolean {
         if (dream) return false
+        if (currentPage() == "kids" && handleQuizKey(keyCode)) return true
         when (keyCode) {
             KeyEvent.KEYCODE_DPAD_LEFT, KeyEvent.KEYCODE_MEDIA_PREVIOUS, KeyEvent.KEYCODE_CHANNEL_DOWN -> step(-1, true)
             KeyEvent.KEYCODE_DPAD_RIGHT, KeyEvent.KEYCODE_MEDIA_NEXT, KeyEvent.KEYCODE_CHANNEL_UP -> step(1, true)
@@ -143,6 +148,30 @@ class SolisViewer(
             else -> return false
         }
         return true
+    }
+
+    private fun currentPage(): String? = if (pages.indices.contains(index)) pages[index] else null
+
+    /** Vraag van de dag op de Kids-pagina: OK = beginnen, links/rechts = kiezen, OK = antwoord, OK = opnieuw. */
+    private fun handleQuizKey(keyCode: Int): Boolean {
+        val ok = keyCode == KeyEvent.KEYCODE_DPAD_CENTER || keyCode == KeyEvent.KEYCODE_ENTER || keyCode == KeyEvent.KEYCODE_NUMPAD_ENTER
+        val sel = quizSel
+        when {
+            ok && sel == null -> { quizSel = 0; quizDone = false; flash("Kies met ◀ ▶ en druk op OK", 3000) }
+            ok && !quizDone -> quizDone = true
+            ok -> { quizSel = null; quizDone = false }
+            sel != null && !quizDone && keyCode == KeyEvent.KEYCODE_DPAD_LEFT -> quizSel = (sel + 2) % 3
+            sel != null && !quizDone && keyCode == KeyEvent.KEYCODE_DPAD_RIGHT -> quizSel = (sel + 1) % 3
+            else -> return false
+        }
+        showPage()
+        return true
+    }
+
+    private fun quizQuery(page: String): String {
+        val sel = quizSel ?: return ""
+        if (page != "kids") return ""
+        return "?keuze=$sel" + if (quizDone) "&klaar=1" else ""
     }
 
     private fun loadPages() {
@@ -178,9 +207,11 @@ class SolisViewer(
             return
         }
         index = ((index + delta) % pages.size + pages.size) % pages.size
+        quizSel = null
+        quizDone = false
         if (announce) {
             val p = pages[index]
-            flash("${names[p] ?: p}  (${index + 1}/${pages.size})", 2000)
+            flash("${names[p] ?: p}  (${index + 1}/${pages.size})" + if (p == "kids") "   ·   OK = vraag beantwoorden" else "", 2500)
         }
         showPage()
     }
@@ -196,7 +227,7 @@ class SolisViewer(
         try {
             exec.execute {
                 try {
-                    val bmp = Net.fetchBitmap(base(), page)
+                    val bmp = Net.fetchBitmap(base(), page, quizQuery(page))
                     main.post {
                         if (running && myGen == generation) {
                             image.setImageBitmap(bmp)

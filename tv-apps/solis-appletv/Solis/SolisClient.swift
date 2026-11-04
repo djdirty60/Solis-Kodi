@@ -43,9 +43,13 @@ struct SolisClient {
         return URLSession(configuration: c)
     }()
 
-    private func data(for path: String) async throws -> Data {
+    private func data(for path: String, query: [URLQueryItem] = []) async throws -> Data {
         guard let base = config.baseURL else { throw SolisError.geenAdres }
-        let url = base.appendingPathComponent(path)
+        var url = base.appendingPathComponent(path)
+        if !query.isEmpty, var comps = URLComponents(url: url, resolvingAgainstBaseURL: false) {
+            comps.queryItems = query
+            if let u = comps.url { url = u }
+        }
         var request = URLRequest(url: url)
         request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
         let (body, response) = try await SolisClient.session.data(for: request)
@@ -67,8 +71,8 @@ struct SolisClient {
     }
 
     /// Het plaatje (1920x1080 PNG) van een pagina.
-    func image(for page: String) async throws -> UIImage {
-        let body = try await data(for: "beeld/page/\(page).png")
+    func image(for page: String, query: [URLQueryItem] = []) async throws -> UIImage {
+        let body = try await data(for: "beeld/page/\(page).png", query: query)
         // PNG begint altijd met deze vier bytes
         let magic: [UInt8] = [0x89, 0x50, 0x4E, 0x47]
         guard body.count > 1000, Array(body.prefix(4)) == magic, let image = UIImage(data: body) else {
