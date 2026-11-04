@@ -1,7 +1,11 @@
-SOLIS VOOR HOMEY - versie 3.44.0 (v96)
+SOLIS VOOR HOMEY - versie 3.45.0 (v97)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v96.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v97.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.45.0:
+- Telefoon: nieuw tabblad Sparen (Spaarpot, Vergelijk, Kids met de vraag van de dag); Inzicht en apparaten bij Overzicht; Dynamisch bij Prijzen; menuknop zit niet meer over het tabblad Nu.
+- Tv, telefoon en Mac tegelijk: gegevens en tv-plaatjes worden kort bewaard, zodat Homey niet alles steeds opnieuw uitrekent.
 
 Nieuw in 3.44.0:
 - De app kijkt zelf op GitHub of er een nieuwere versie is en stuurt dan één melding (ook te zien bij Opties, App-versie).

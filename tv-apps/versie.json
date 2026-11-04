@@ -12,8 +12,8 @@
     "nieuw": "Meldt nieuwe versies. Kids-vraag: Menu of omhoog stopt de vraag."
   },
   "homey": {
-    "version": "3.44.0",
-    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v96.zip",
-    "nieuw": "Melding bij nieuwe versies, duidelijker gekozen antwoord bij de Kids-vraag."
+    "version": "3.45.0",
+    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v97.zip",
+    "nieuw": "Telefoonversie bijgewerkt (Sparen, Inzicht, Dynamisch) en tv en telefoon tegelijk gebruiken gaat beter."
   }
 }
