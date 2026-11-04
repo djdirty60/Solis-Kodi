@@ -12,7 +12,10 @@ APP=$(find build -name "Solis.app" -type d | head -1)
 if [ -f "$APP/Assets.car" ]; then echo "Icoon zit erin: ja"; else echo "Icoon zit erin: NEE (stuur me dit bericht)"; fi
 mkdir Payload && cp -R "$APP" Payload/
 rm -f ../../Solis-AppleTV-v4.ipa
-zip -qrX ../../Solis-AppleTV-v4.ipa Payload
+zip -qrX ruw.ipa Payload
+# opnieuw inpakken op de manier die de installatiedienst (KTB) accepteert
+python3 ../../schoonzip.py ruw.ipa ../../Solis-AppleTV-v4.ipa
+rm -f ruw.ipa
 rm -rf Payload
 echo "Klaar: Solis-AppleTV-v4.ipa staat naast dit script."
 ls -la ../../Solis-AppleTV-v4.ipa
