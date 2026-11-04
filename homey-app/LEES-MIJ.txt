@@ -1,0 +1,10 @@
+SOLIS VOOR HOMEY - versie 3.43.0 (v94)
+
+Installeren (Terminal op de Mac, met de Homey CLI):
+unzip -oq Solis-voor-Homey-v94.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.43.0:
+- Eén blijvende verbinding met de datalogger in plaats van elke 20 seconden opnieuw verbinden (minder "omvormer niet bereikbaar").
+- Bovenbalk van dashboard en tv-pagina's valt nergens meer over elkaar heen.
+- Spaarpot, Vergelijk en Kids als echte pagina's in het dashboard; instelbaar bij "Pagina's en volgorde".
+- Kids: vraag van de dag zelf beantwoorden (dashboard: klikken; tv: OK, links/rechts, OK). Rekent met de laatste dag met opbrengst als gisteren ontbreekt.
