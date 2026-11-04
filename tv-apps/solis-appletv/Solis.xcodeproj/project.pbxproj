@@ -1,0 +1,233 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		06C3FAAD307D7F2D260DA607 /* SolisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A04A26A71B7753B11C1B3F /* SolisApp.swift */; };
+		51242BDC3AE29EF2E484A3FB /* SolisClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0B21F9D3FC74A76328EE77 /* SolisClient.swift */; };
+		416F31F47508F3F36A262EAC /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB22C469E6308F00F9C6DFF0 /* SetupView.swift */; };
+		20F5082DBFC77F2E668CD20A /* ViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9507A00C4321A1D1DF28EC14 /* ViewerView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B3A04A26A71B7753B11C1B3F /* SolisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolisApp.swift; sourceTree = "<group>"; };
+		6B0B21F9D3FC74A76328EE77 /* SolisClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolisClient.swift; sourceTree = "<group>"; };
+		AB22C469E6308F00F9C6DFF0 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
+		9507A00C4321A1D1DF28EC14 /* ViewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewerView.swift; sourceTree = "<group>"; };
+		D8FA987CD63953BFE54CC343 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CBA5C34985D65298407B811 /* Solis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Solis.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DCF3E36EE8115282AAD46485 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B19911C44BD755AB4F173858 = {
+			isa = PBXGroup;
+			children = (
+				BAD16117E5CC1353867B324E /* Solis */,
+				3936A56E033FE156B0D38F79 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BAD16117E5CC1353867B324E /* Solis */ = {
+			isa = PBXGroup;
+			children = (
+				B3A04A26A71B7753B11C1B3F /* SolisApp.swift */,
+				6B0B21F9D3FC74A76328EE77 /* SolisClient.swift */,
+				AB22C469E6308F00F9C6DFF0 /* SetupView.swift */,
+				9507A00C4321A1D1DF28EC14 /* ViewerView.swift */,
+				D8FA987CD63953BFE54CC343 /* Info.plist */,
+			);
+			path = Solis;
+			sourceTree = "<group>";
+		};
+		3936A56E033FE156B0D38F79 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0CBA5C34985D65298407B811 /* Solis.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		42AEFBAE01D2DFD981F7DA7D /* Solis */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2080502859FB363E8EF65FF2 /* Build configuration list for PBXNativeTarget "Solis" */;
+			buildPhases = (
+				F2AB5FB218DA8B84623F4557 /* Sources */,
+				DCF3E36EE8115282AAD46485 /* Frameworks */,
+				9B207167E5381C47682C6B4F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Solis;
+			productName = Solis;
+			productReference = 0CBA5C34985D65298407B811 /* Solis.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		46F86FAA6BBF9AC94A7E4595 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+			};
+			buildConfigurationList = 2D6CADEF21B99EA5E890ABE8 /* Build configuration list for PBXProject "Solis" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = nl;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				nl,
+				en,
+				Base,
+			);
+			mainGroup = B19911C44BD755AB4F173858;
+			productRefGroup = 3936A56E033FE156B0D38F79 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				42AEFBAE01D2DFD981F7DA7D /* Solis */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9B207167E5381C47682C6B4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F2AB5FB218DA8B84623F4557 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06C3FAAD307D7F2D260DA607 /* SolisApp.swift in Sources */,
+				51242BDC3AE29EF2E484A3FB /* SolisClient.swift in Sources */,
+				416F31F47508F3F36A262EAC /* SetupView.swift in Sources */,
+				20F5082DBFC77F2E668CD20A /* ViewerView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2C8D34A64E38ADE6BA2C7441 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 16.0;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A7939D043567EE90A9F1FEBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 16.0;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A7A1072F6FD63598C9972E6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = Solis/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.solisvoorhomey.solis;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		B9265DA4FE5F418A67F87E00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = Solis/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.solisvoorhomey.solis;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D6CADEF21B99EA5E890ABE8 /* Build configuration list for PBXProject "Solis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C8D34A64E38ADE6BA2C7441 /* Debug */,
+				A7939D043567EE90A9F1FEBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2080502859FB363E8EF65FF2 /* Build configuration list for PBXNativeTarget "Solis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7A1072F6FD63598C9972E6D /* Debug */,
+				B9265DA4FE5F418A67F87E00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 46F86FAA6BBF9AC94A7E4595 /* Project object */;
+}
