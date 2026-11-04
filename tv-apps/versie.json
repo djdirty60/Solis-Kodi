@@ -12,8 +12,8 @@
     "nieuw": "Meldt nieuwe versies. Kids-vraag: Menu of omhoog stopt de vraag."
   },
   "homey": {
-    "version": "3.45.0",
-    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v97.zip",
-    "nieuw": "Telefoonversie bijgewerkt (Sparen, Inzicht, Dynamisch) en tv en telefoon tegelijk gebruiken gaat beter."
+    "version": "3.45.1",
+    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v98.zip",
+    "nieuw": "Een dag gaat niet meer verloren als de app na middernacht opnieuw start; ontbrekende dagen worden uit Homey aangevuld."
   }
 }

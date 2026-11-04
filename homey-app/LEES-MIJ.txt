@@ -1,7 +1,11 @@
-SOLIS VOOR HOMEY - versie 3.45.0 (v97)
+SOLIS VOOR HOMEY - versie 3.45.1 (v98)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v97.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v98.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.45.1:
+- Herstart na middernacht: de vorige dag wordt eerst bewaard (ging voorheen verloren).
+- Ontbrekende dagen (gisteren, eergisteren) worden bij het opstarten uit Homey Insights aangevuld; de dagteller van gisteren telt niet meer mee voor vandaag.
 
 Nieuw in 3.45.0:
 - Telefoon: nieuw tabblad Sparen (Spaarpot, Vergelijk, Kids met de vraag van de dag); Inzicht en apparaten bij Overzicht; Dynamisch bij Prijzen; menuknop zit niet meer over het tabblad Nu.
