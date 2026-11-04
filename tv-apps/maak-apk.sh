@@ -1,5 +1,5 @@
 #!/bin/bash
-# Bouwt de Android TV-app (Solis-AndroidTV-v3.apk) op de Mac.
+# Bouwt de Android TV-app (Solis-AndroidTV-v4.apk) op de Mac.
 # Nodig: Android Studio (een keer geopend, zodat de Android SDK er staat).
 set -e
 cd "$(dirname "$0")"
@@ -36,6 +36,6 @@ echo "sdk.dir=$SDK" > local.properties
 chmod +x gradlew
 echo "Bezig met bouwen. De eerste keer duurt dit een paar minuten..."
 ./gradlew --no-daemon -q assembleDebug
-cp app/build/outputs/apk/debug/app-debug.apk "$DIR/Solis-AndroidTV-v3.apk"
-echo "Klaar: Solis-AndroidTV-v3.apk staat naast dit script."
-ls -la "$DIR/Solis-AndroidTV-v3.apk"
+cp app/build/outputs/apk/debug/app-debug.apk "$DIR/Solis-AndroidTV-v4.apk"
+echo "Klaar: Solis-AndroidTV-v4.apk staat naast dit script."
+ls -la "$DIR/Solis-AndroidTV-v4.apk"

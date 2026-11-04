@@ -156,8 +156,11 @@ class SolisViewer(
     private fun handleQuizKey(keyCode: Int): Boolean {
         val ok = keyCode == KeyEvent.KEYCODE_DPAD_CENTER || keyCode == KeyEvent.KEYCODE_ENTER || keyCode == KeyEvent.KEYCODE_NUMPAD_ENTER
         val sel = quizSel
+        val stop = keyCode == KeyEvent.KEYCODE_DPAD_UP || keyCode == KeyEvent.KEYCODE_BACK
         when {
-            ok && sel == null -> { quizSel = 0; quizDone = false; flash("Kies met ◀ ▶ en druk op OK", 3000) }
+            // omhoog of terug: stoppen met de vraag en weer gewoon bladeren (terug sluit dan dus niet de app)
+            stop && sel != null -> { quizSel = null; quizDone = false; flash("◀ ▶ pagina   OK vraag beantwoorden", 2500) }
+            ok && sel == null -> { quizSel = 0; quizDone = false; flash("Kies met ◀ ▶ en druk op OK   ·   ▲ of terug = stoppen", 3500) }
             ok && !quizDone -> quizDone = true
             ok -> { quizSel = null; quizDone = false }
             sel != null && !quizDone && keyCode == KeyEvent.KEYCODE_DPAD_LEFT -> quizSel = (sel + 2) % 3

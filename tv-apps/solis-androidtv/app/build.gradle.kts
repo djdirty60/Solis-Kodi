@@ -11,8 +11,8 @@ android {
         applicationId = "nl.leek.solis.tv"
         minSdk = 23
         targetSdk = 34
-        versionCode = 2
-        versionName = "1.1.0"
+        versionCode = 3
+        versionName = "1.2.0"
     }
 
     // Altijd dezelfde handtekening, zodat een nieuwe versie gewoon over de oude heen installeert.

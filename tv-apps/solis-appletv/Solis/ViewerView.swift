@@ -26,6 +26,11 @@ struct ViewerView: View {
                 .focused($viewerFocused)
                 .onMoveCommand { direction in
                     guard !showMenu else { return }
+                    // Kids-pagina: omhoog = stoppen met de vraag en weer gewoon bladeren
+                    if currentPage == "kids", quizSel != nil, direction == .up {
+                        stopQuiz()
+                        return
+                    }
                     // Kids-pagina: tijdens het kiezen wisselen links/rechts van antwoord in plaats van pagina
                     if currentPage == "kids", let sel = quizSel, !quizDone {
                         switch direction {
@@ -150,7 +155,15 @@ struct ViewerView: View {
     /// Menu-knop: alleen als het menu dicht is zelf afhandelen, anders doet tvOS het standaardgedrag (app sluiten).
     private var exitAction: (() -> Void)? {
         if showMenu { return nil }
+        // Tijdens de Kids-vraag: Menu stopt eerst de vraag, in plaats van het menu te openen of de app te sluiten
+        if quizSel != nil { return { stopQuiz() } }
         return { showMenu = true }
+    }
+
+    private func stopQuiz() {
+        quizSel = nil
+        quizDone = false
+        Task { await refresh(reloadPages: false) }
     }
 
     private var updateText: String {
