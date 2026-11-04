@@ -10,7 +10,7 @@ Made by Wilfried van der Voort. The app and dashboards are in Dutch (an English 
 
 | Folder | What it is | Latest version |
 | --- | --- | --- |
-| `homey-app/` | The Homey app **Solis voor Homey** (zip, install with the Homey CLI) | 3.47.3 (v106) |
+| `homey-app/` | The Homey app **Solis voor Homey** (zip, install with the Homey CLI) | 3.47.4 (v107) |
 | `tv-apps/` | Android TV / Google TV app and Apple TV app that show the dashboard pages | Android 1.2.0, Apple TV v4 |
 | `script.solis.dashboard/`, `repository.solis-1.0.0.zip` | Kodi / CoreELEC add-on, with automatic updates through the Solis repository | 2.6.0 |
 | `screensaver.solis.dashboard/` | Kodi screensaver with the dashboard | |
@@ -55,9 +55,9 @@ Setup in short: give the data logger a fixed IP address in your router, then add
 
 The app is not in the Homey App Store yet. You install it from a computer with the Homey CLI (Node.js needed):
 
-1. Download `homey-app/Solis-voor-Homey-v106.zip` from this repository.
+1. Download `homey-app/Solis-voor-Homey-v107.zip` from this repository.
 2. In Terminal: `npm install -g homey` and `homey login`.
-3. Then: `unzip -oq Solis-voor-Homey-v106.zip -d app && cd app && npm install && homey app install`
+3. Then: `unzip -oq Solis-voor-Homey-v107.zip -d app && cd app && npm install && homey app install`
 4. In the Homey app: add a device **Solis** and fill in the IP address of the data logger, port 502 and ID 1.
 
 ## Dashboard on the Mac, tablet and phone

@@ -1,7 +1,10 @@
-SOLIS VOOR HOMEY - versie 3.47.3 (v106)
+SOLIS VOOR HOMEY - versie 3.47.4 (v107)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v106.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v107.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.47.4:
+- Vaatwasser: grens van 'klaar' van 2 W naar 1 W. Het laatste stuk drogen zit soms rond 1,5 W en hoort nog bij de beurt.
 
 Nieuw in 3.47.3:
 - Eenmalig: beurten van de vaatwasser die oudere versies hebben geleerd worden gewist. Die waren te kort (het drogen telde als klaar). De app leert daarna opnieuw met hele beurten. In de tijdlijn staat hoeveel er gewist zijn.
