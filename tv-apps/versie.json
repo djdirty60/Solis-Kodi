@@ -12,8 +12,8 @@
     "nieuw": "Meldt nieuwe versies. Kids-vraag: Menu of omhoog stopt de vraag."
   },
   "homey": {
-    "version": "3.49.1",
-    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v110.zip",
-    "nieuw": "Vast contract: je vaste tarief staat bij Stroomprijs. Neemt het geleerde gemiddelde over uit Power Profiler."
+    "version": "3.50.0",
+    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v111.zip",
+    "nieuw": "Stekker van wasmachine, vaatwasser of droger uitzetten als ze klaar zijn (instelling, staat standaard uit)."
   }
 }

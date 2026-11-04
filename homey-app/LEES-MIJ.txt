@@ -1,7 +1,10 @@
-SOLIS VOOR HOMEY - versie 3.49.1 (v110)
+SOLIS VOOR HOMEY - versie 3.50.0 (v111)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v110.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v111.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.50.0:
+- Nieuwe instelling (Apparaten en planner): 'Stekker uitzetten als de wasmachine, vaatwasser of droger klaar is'. Een half uur na het einde van de beurt zet de app de stekker uit. Alleen voor wasmachine, vaatwasser en droger, en alleen als het apparaat dan bijna niets meer gebruikt. Staat standaard uit.
 
 Nieuw in 3.49.1:
 - Vast contract: bij Stroomprijs (dashboard, tv, Kodi) staat nu je vaste tarief in plaats van een streepje. Vul het in bij Instellingen, Contract en tarieven: 'Vast contract: prijs per kWh (€)'. Staat daar 0, dan blijft het een streepje.
