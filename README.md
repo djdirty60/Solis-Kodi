@@ -63,6 +63,14 @@ The app is not in the Homey App Store yet. You install it from a computer with t
 
 The app runs a small web dashboard on your own network: `http://HOMEY-IP:8765`. On a phone it switches to a phone layout with five tabs (Nu, Prijzen, Overzicht, Sparen, Meer). Add it to your home screen (iPhone: share button, "Add to Home Screen"; Mac: Safari, File, Add to Dock).
 
+![Phone layout](docs/mobile.png)
+
+<details><summary>Dark mode</summary>
+
+![Phone layout, dark](docs/mobile-dark.png)
+
+</details>
+
 The same pages are drawn as images for the TV:
 
 | Page | What you see |
