@@ -10,5 +10,5 @@ Getest: Android TV-app gebouwd en gestart in de Android Studio-emulator; Apple T
 
 ## Downloads (testversies)
 
-- `downloads/Solis-AndroidTV.apk` (versie 1.1.0): installeren met de app Downloader of `adb install`. Installeert over eerdere versies heen (zelfde handtekening). Bouwen op de Mac: `maak-apk.sh`.
-- `downloads/Solis-AppleTV-v3.ipa`: **niet getekend**, bedoeld voor een installatiedienst die zelf tekent (bundle id `nl.solisvoorhomey.solis`).
+- `downloads/Solis-AndroidTV.apk` (versie 1.2.0, werkt zichzelf bij): installeren met de app Downloader of `adb install`. Installeert over eerdere versies heen (zelfde handtekening). Bouwen op de Mac: `maak-apk.sh`.
+- `downloads/Solis-AppleTV-v4.ipa`: **niet getekend**, bedoeld voor een installatiedienst die zelf tekent (bundle id `nl.solisvoorhomey.solis`).
