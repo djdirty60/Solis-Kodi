@@ -1,7 +1,12 @@
-SOLIS VOOR HOMEY - versie 3.47.4 (v107)
+SOLIS VOOR HOMEY - versie 3.48.0 (v108)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v107.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v108.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.48.0:
+- Verbinding met de datalogger (S2-WL-ST) betrouwbaarder. De logger laat maar één verbinding tegelijk toe en ruimt een half kapotte verbinding niet zelf op. De app zorgt nu dat er nooit een tweede of losgelaten verbinding blijft hangen, breekt een kapotte verbinding hard af (zodat de logger meteen weer vrij is), wacht minstens 0,4 seconde tussen twee vragen (Solis schrijft meer dan 0,3 s voor) en bouwt na 3 mislukte pogingen de verbinding helemaal opnieuw op.
+- Bij 'Verbinding weg' staat in de tijdlijn nu ook waarom (bijvoorbeeld: geen antwoord binnen 6 s).
+- Dashboard: kon het na een update niet starten omdat de poort nog even bezet was, dan probeert de app het na 15 seconden opnieuw. Voorheen bleef het dashboard (en dus Kodi en de tv-apps) dan weg tot een herstart.
 
 Nieuw in 3.47.4:
 - Vaatwasser: grens van 'klaar' van 2 W naar 1 W. Het laatste stuk drogen zit soms rond 1,5 W en hoort nog bij de beurt.
