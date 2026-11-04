@@ -34,6 +34,8 @@ echo "Java: $JAVA_HOME (versie $(versie "$JAVA_HOME"))"
 cd "$PROJ"
 echo "sdk.dir=$SDK" > local.properties
 chmod +x gradlew
+# oude tussenbestanden (van Android Studio) weggooien, anders botsen die met deze bouw
+rm -rf app/build build .gradle
 echo "Bezig met bouwen. De eerste keer duurt dit een paar minuten..."
 ./gradlew --no-daemon -q assembleDebug
 cp app/build/outputs/apk/debug/app-debug.apk "$DIR/Solis-AndroidTV-v4.apk"
