@@ -12,8 +12,8 @@
     "nieuw": "Meldt nieuwe versies. Kids-vraag: Menu of omhoog stopt de vraag."
   },
   "homey": {
-    "version": "3.46.0",
-    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v102.zip",
-    "nieuw": "Flowkaart 'Zet apparaat klaar' heeft een veld 'duurt ... min', bijvoorbeeld voor 'Time remaining' van de wasmachine."
+    "version": "3.47.0",
+    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v103.zip",
+    "nieuw": "Nieuwe instelling 'Alleen de basis': alleen uitlezen, beperken en aan/uit."
   }
 }

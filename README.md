@@ -10,7 +10,7 @@ Made by Wilfried van der Voort. The app and dashboards are in Dutch (an English 
 
 | Folder | What it is | Latest version |
 | --- | --- | --- |
-| `homey-app/` | The Homey app **Solis voor Homey** (zip, install with the Homey CLI) | 3.46.0 (v102) |
+| `homey-app/` | The Homey app **Solis voor Homey** (zip, install with the Homey CLI) | 3.47.0 (v103) |
 | `tv-apps/` | Android TV / Google TV app and Apple TV app that show the dashboard pages | Android 1.2.0, Apple TV v4 |
 | `script.solis.dashboard/`, `repository.solis-1.0.0.zip` | Kodi / CoreELEC add-on, with automatic updates through the Solis repository | 2.6.0 |
 | `screensaver.solis.dashboard/` | Kodi screensaver with the dashboard | |
@@ -35,7 +35,8 @@ Setup in short: give the data logger a fixed IP address in your router, then add
 - Flow cards for faults, lost and restored connection, and more.
 - Calm at night: the logger switches off without sun; the app sees the sun position and waits for the morning without false alarms.
 
-**Extras (all optional, notifications can be switched off one by one):**
+**Extras (all optional, notifications can be switched off one by one).** Want only the core? Turn on **Alleen de basis** (Basics only) at the top of the settings: everything below is then switched off, except notifications for faults and a lost connection.
+
 
 - Price steering: limit or switch off at negative or low prices. Hourly prices can come from **Power by the Hour** through a flow, or the app fetches them itself.
 - Daily, weekly and monthly reports, morning summary with the expected yield based on the weather forecast.
@@ -54,9 +55,9 @@ Setup in short: give the data logger a fixed IP address in your router, then add
 
 The app is not in the Homey App Store yet. You install it from a computer with the Homey CLI (Node.js needed):
 
-1. Download `homey-app/Solis-voor-Homey-v102.zip` from this repository.
+1. Download `homey-app/Solis-voor-Homey-v103.zip` from this repository.
 2. In Terminal: `npm install -g homey` and `homey login`.
-3. Then: `unzip -oq Solis-voor-Homey-v102.zip -d app && cd app && npm install && homey app install`
+3. Then: `unzip -oq Solis-voor-Homey-v103.zip -d app && cd app && npm install && homey app install`
 4. In the Homey app: add a device **Solis** and fill in the IP address of the data logger, port 502 and ID 1.
 
 ## Dashboard on the Mac, tablet and phone
