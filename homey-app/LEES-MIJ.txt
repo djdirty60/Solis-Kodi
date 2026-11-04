@@ -1,7 +1,10 @@
-SOLIS VOOR HOMEY - versie 3.49.0 (v109)
+SOLIS VOOR HOMEY - versie 3.49.1 (v110)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v109.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v110.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.49.1:
+- Vast contract: bij Stroomprijs (dashboard, tv, Kodi) staat nu je vaste tarief in plaats van een streepje. Vul het in bij Instellingen, Contract en tarieven: 'Vast contract: prijs per kWh (€)'. Staat daar 0, dan blijft het een streepje.
 
 Nieuw in 3.49.0:
 - Heb je de Homey-app 'Power Profiler'? Dan neemt Solis het geleerde gemiddelde daaruit over (duur en kWh per beurt), zolang Solis zelf nog geen 3 eigen beurten heeft gezien. Het Profiler-apparaat moet heten: '<naam van je apparaat> Profiler' (bijvoorbeeld 'Vaatwasser Profiler') en minstens 3 beurten kennen. Op het dashboard staat dan 'uit Power Profiler'. Daarna gaan de eigen beurten van Solis voor.
