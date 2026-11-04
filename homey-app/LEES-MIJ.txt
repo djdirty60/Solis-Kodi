@@ -1,10 +1,12 @@
-SOLIS VOOR HOMEY - versie 3.47.1 (v104)
+SOLIS VOOR HOMEY - versie 3.47.2 (v105)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v104.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v105.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.47.2:
+- Vaatwasser: het drogen (een paar watt, soms ruim 2 uur) hoort nu bij de beurt. De vaatwasser is pas klaar als hij 5 minuten onder de 2 W zit (stand-by). Blijft een vaatwasser in stand-by boven de 2 W, dan telt hij na 4 uur zonder echt verbruik toch als klaar.
 
 Nieuw in 3.47.1:
-- Vaatwasser: het droogstuk (heel weinig stroom) telde als 'klaar', waardoor een beurt te vroeg werd geleerd. Nu wacht de app bij een vaatwasser 20 minuten laag verbruik voordat de beurt klaar is.
 - Wasmachine: na 5 minuten laag verbruik is de beurt klaar. Gaat hij binnen 30 minuten weer verder (bijvoorbeeld weken of pauze), dan telt het als dezelfde beurt en krijg je maar één melding 'klaar'.
 - Een beurt wordt pas geleerd als zeker is dat hij echt klaar is.
 

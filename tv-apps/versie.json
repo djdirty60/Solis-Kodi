@@ -12,8 +12,8 @@
     "nieuw": "Meldt nieuwe versies. Kids-vraag: Menu of omhoog stopt de vraag."
   },
   "homey": {
-    "version": "3.47.1",
-    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v104.zip",
-    "nieuw": "Vaatwasser en wasmachine: een beurt telt pas als hij echt klaar is (droogstuk en pauzes horen erbij)."
+    "version": "3.47.2",
+    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v105.zip",
+    "nieuw": "Vaatwasser: het drogen hoort bij de beurt; klaar pas onder de 2 W. Wasmachine: pauzes tellen niet als aparte beurt."
   }
 }
