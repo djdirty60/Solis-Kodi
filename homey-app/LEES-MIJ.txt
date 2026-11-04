@@ -1,7 +1,12 @@
-SOLIS VOOR HOMEY - versie 3.47.0 (v103)
+SOLIS VOOR HOMEY - versie 3.47.1 (v104)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v103.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v104.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.47.1:
+- Vaatwasser: het droogstuk (heel weinig stroom) telde als 'klaar', waardoor een beurt te vroeg werd geleerd. Nu wacht de app bij een vaatwasser 20 minuten laag verbruik voordat de beurt klaar is.
+- Wasmachine: na 5 minuten laag verbruik is de beurt klaar. Gaat hij binnen 30 minuten weer verder (bijvoorbeeld weken of pauze), dan telt het als dezelfde beurt en krijg je maar één melding 'klaar'.
+- Een beurt wordt pas geleerd als zeker is dat hij echt klaar is.
 
 Nieuw in 3.47.0:
 - Instelling 'Alleen de basis' (bovenaan bij Instellingen): de app leest alleen de omvormer uit, en je kunt beperken en aan/uit zetten (ook via flows). Rapporten, tips, prijzen, weer, apparaten, planner en dashboard staan dan uit. Meldingen bij storing of als de omvormer niet bereikbaar is blijven aan.
