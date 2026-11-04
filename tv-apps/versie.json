@@ -12,8 +12,8 @@
     "nieuw": "Meldt nieuwe versies. Kids-vraag: Menu of omhoog stopt de vraag."
   },
   "homey": {
-    "version": "3.45.2",
-    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v99.zip",
-    "nieuw": "Een lopende wasbeurt gaat niet meer verloren bij een herstart of update van de app."
+    "version": "3.45.3",
+    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v100.zip",
+    "nieuw": "Je ziet nu per apparaat hoe ver de app is met leren; een lopende wasbeurt gaat niet meer verloren bij een herstart."
   }
 }

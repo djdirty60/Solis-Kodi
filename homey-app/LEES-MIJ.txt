@@ -1,7 +1,10 @@
-SOLIS VOOR HOMEY - versie 3.45.2 (v99)
+SOLIS VOOR HOMEY - versie 3.45.3 (v100)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v99.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v100.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.45.3:
+- Dashboard, pagina Details: per gevolgd apparaat staat hoe ver de app is met leren (bijvoorbeeld 'leert: 1 van 3 beurten').
 
 Nieuw in 3.45.2:
 - Lopende beurten van gevolgde apparaten (wasmachine, vaatwasser) worden bewaard; een herstart of update tijdens het wassen wist de beurt niet meer.
