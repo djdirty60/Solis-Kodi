@@ -11,6 +11,7 @@
 		51242BDC3AE29EF2E484A3FB /* SolisClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0B21F9D3FC74A76328EE77 /* SolisClient.swift */; };
 		416F31F47508F3F36A262EAC /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB22C469E6308F00F9C6DFF0 /* SetupView.swift */; };
 		20F5082DBFC77F2E668CD20A /* ViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9507A00C4321A1D1DF28EC14 /* ViewerView.swift */; };
+		8D2F6B1C3E4A5B7C9D0E1F22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C1E5A0B2D3F4A6B8C9D0E11 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		9507A00C4321A1D1DF28EC14 /* ViewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewerView.swift; sourceTree = "<group>"; };
 		D8FA987CD63953BFE54CC343 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CBA5C34985D65298407B811 /* Solis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Solis.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C1E5A0B2D3F4A6B8C9D0E11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +51,7 @@
 				AB22C469E6308F00F9C6DFF0 /* SetupView.swift */,
 				9507A00C4321A1D1DF28EC14 /* ViewerView.swift */,
 				D8FA987CD63953BFE54CC343 /* Info.plist */,
+				7C1E5A0B2D3F4A6B8C9D0E11 /* Assets.xcassets */,
 			);
 			path = Solis;
 			sourceTree = "<group>";
@@ -115,6 +118,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D2F6B1C3E4A5B7C9D0E1F22 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,8 +185,9 @@
 		A7A1072F6FD63598C9972E6D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				INFOPLIST_FILE = Solis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0;
@@ -195,8 +200,9 @@
 		B9265DA4FE5F418A67F87E00 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				INFOPLIST_FILE = Solis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0;

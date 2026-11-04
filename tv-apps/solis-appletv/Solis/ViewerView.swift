@@ -59,10 +59,14 @@ struct ViewerView: View {
             Color.black.ignoresSafeArea()
 
             if let image = image {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFit()
-                    .ignoresSafeArea()
+                GeometryReader { geo in
+                    Image(uiImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: geo.size.width, height: geo.size.height)
+                        .clipped()
+                }
+                .ignoresSafeArea()
             } else if errorText == nil {
                 ProgressView("Laden…")
             }
