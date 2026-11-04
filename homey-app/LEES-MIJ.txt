@@ -1,7 +1,11 @@
-SOLIS VOOR HOMEY - versie 3.45.1 (v98)
+SOLIS VOOR HOMEY - versie 3.45.2 (v99)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v98.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v99.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.45.2:
+- Lopende beurten van gevolgde apparaten (wasmachine, vaatwasser) worden bewaard; een herstart of update tijdens het wassen wist de beurt niet meer.
+- Telefoon, tabblad Meer: gevolgde apparaten staan er ook al voordat de eerste beurt geleerd is.
 
 Nieuw in 3.45.1:
 - Herstart na middernacht: de vorige dag wordt eerst bewaard (ging voorheen verloren).
