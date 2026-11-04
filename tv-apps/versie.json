@@ -12,8 +12,8 @@
     "nieuw": "Meldt nieuwe versies. Kids-vraag: Menu of omhoog stopt de vraag."
   },
   "homey": {
-    "version": "3.45.4",
-    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v101.zip",
-    "nieuw": "Updaten tijdens een was of vaatwasser kan nu: de beurt wordt onthouden en het verbruik komt uit de kWh-teller van de stekker."
+    "version": "3.46.0",
+    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v102.zip",
+    "nieuw": "Flowkaart 'Zet apparaat klaar' heeft een veld 'duurt ... min', bijvoorbeeld voor 'Time remaining' van de wasmachine."
   }
 }

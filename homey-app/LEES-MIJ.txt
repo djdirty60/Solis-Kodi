@@ -1,7 +1,11 @@
-SOLIS VOOR HOMEY - versie 3.45.4 (v101)
+SOLIS VOOR HOMEY - versie 3.46.0 (v102)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v101.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v102.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.46.0:
+- Flowkaart 'Zet apparaat klaar': nieuw veld 'duurt ... min'. Zet daar de token 'Time remaining' van je wasmachine in; de app plant dan met de echte duur van het programma.
+- Het veld 'na' is voor de naam van een ander apparaat (bijvoorbeeld: vaatwasser na wasmachine). Een getal in dat veld wordt genegeerd.
 
 Nieuw in 3.45.4:
 - Updaten of herstarten tijdens een was of vaatwasser kan: de lopende beurt wordt onthouden (tot 30 minuten onderbreking) en het verbruik van een beurt komt uit de kWh-teller van de stekker, zodat er niets mist.
