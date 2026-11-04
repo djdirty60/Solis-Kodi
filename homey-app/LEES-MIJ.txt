@@ -1,7 +1,11 @@
-SOLIS VOOR HOMEY - versie 3.45.3 (v100)
+SOLIS VOOR HOMEY - versie 3.45.4 (v101)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v100.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v101.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.45.4:
+- Updaten of herstarten tijdens een was of vaatwasser kan: de lopende beurt wordt onthouden (tot 30 minuten onderbreking) en het verbruik van een beurt komt uit de kWh-teller van de stekker, zodat er niets mist.
+- De dagcijfers worden elke minuut bewaard in plaats van elke 5 minuten.
 
 Nieuw in 3.45.3:
 - Dashboard, pagina Details: per gevolgd apparaat staat hoe ver de app is met leren (bijvoorbeeld 'leert: 1 van 3 beurten').
