@@ -14,6 +14,7 @@ struct ViewerView: View {
     @State private var requestID: Int = 0
     @State private var lastUpdate: Date? = nil
     @FocusState private var viewerFocused: Bool
+    @FocusState private var menuFocus: MenuItem?
 
     var body: some View {
         ZStack {
@@ -89,27 +90,40 @@ struct ViewerView: View {
 
     private var menuLayer: some View {
         ZStack {
-            Color.black.opacity(0.75).ignoresSafeArea()
-            VStack(spacing: 32) {
+            Color.black.opacity(0.88).ignoresSafeArea()
+            VStack(spacing: 40) {
                 Text("Solis")
-                    .font(.largeTitle)
-                    .bold()
+                    .font(.system(size: 80, weight: .bold))
+                    .foregroundColor(.white)
                 Text(updateText)
-                    .foregroundColor(.secondary)
-                Button("Doorgaan") { showMenu = false }
-                Button("Ververs nu") {
-                    showMenu = false
-                    Task { await refresh() }
-                }
-                Button("Instellingen") {
-                    showMenu = false
-                    openSetup()
+                    .font(.system(size: 34))
+                    .foregroundColor(Color.white.opacity(0.85))
+                VStack(spacing: 28) {
+                    Button { showMenu = false } label: { MenuButtonLabel(title: "Doorgaan") }
+                        .buttonStyle(.plain)
+                        .focused($menuFocus, equals: .continueItem)
+                    Button {
+                        showMenu = false
+                        Task { await refresh() }
+                    } label: { MenuButtonLabel(title: "Ververs nu") }
+                        .buttonStyle(.plain)
+                        .focused($menuFocus, equals: .refresh)
+                    Button {
+                        showMenu = false
+                        openSetup()
+                    } label: { MenuButtonLabel(title: "Instellingen") }
+                        .buttonStyle(.plain)
+                        .focused($menuFocus, equals: .settings)
                 }
                 Text("Druk nog een keer op Menu om de app te sluiten.")
-                    .font(.callout)
-                    .foregroundColor(.secondary)
+                    .font(.system(size: 30))
+                    .foregroundColor(Color.white.opacity(0.75))
             }
-            .padding(60)
+            .padding(80)
+            .background(RoundedRectangle(cornerRadius: 36).fill(Color(white: 0.14)))
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { menuFocus = .continueItem }
         }
     }
 
@@ -167,5 +181,28 @@ struct ViewerView: View {
             if myID != requestID { return }
             errorText = SolisClient.describe(error)
         }
+    }
+}
+
+
+/// Keuzes in het menu (voor de focus met de Siri Remote).
+enum MenuItem: Hashable {
+    case continueItem, refresh, settings
+}
+
+/// Grote, goed leesbare menuknop: wit op donker, de gekozen knop is wit met zwarte tekst.
+struct MenuButtonLabel: View {
+    let title: String
+    @Environment(\.isFocused) private var isFocused
+
+    var body: some View {
+        Text(title)
+            .font(.system(size: 42, weight: .semibold))
+            .foregroundColor(isFocused ? Color.black : Color.white)
+            .frame(width: 640)
+            .padding(.vertical, 22)
+            .background(RoundedRectangle(cornerRadius: 22).fill(isFocused ? Color.white : Color.white.opacity(0.2)))
+            .scaleEffect(isFocused ? 1.06 : 1.0)
+            .animation(.easeOut(duration: 0.15), value: isFocused)
     }
 }
