@@ -10,7 +10,7 @@ Made by Wilfried van der Voort. The app and dashboards are in Dutch (an English 
 
 | Folder | What it is | Latest version |
 | --- | --- | --- |
-| `homey-app/` | The Homey app **Solis voor Homey** (zip, install with the Homey CLI) | 3.53.0 (v114) |
+| `homey-app/` | The Homey app **Solis voor Homey** (zip, install with the Homey CLI) | 3.54.0 (v115) |
 | `tv-apps/` | Android TV / Google TV app and Apple TV app that show the dashboard pages | Android 1.2.0, Apple TV v4 |
 | `script.solis.dashboard/`, `repository.solis-1.0.0.zip` | Kodi / CoreELEC add-on, with automatic updates through the Solis repository | 2.6.0 |
 | `screensaver.solis.dashboard/` | Kodi screensaver with the dashboard | |
@@ -55,9 +55,9 @@ Setup in short: give the data logger a fixed IP address in your router, then add
 
 The app is not in the Homey App Store yet. You install it from a computer with the Homey CLI (Node.js needed):
 
-1. Download `homey-app/Solis-voor-Homey-v114.zip` from this repository.
+1. Download `homey-app/Solis-voor-Homey-v115.zip` from this repository.
 2. In Terminal: `npm install -g homey` and `homey login`.
-3. Then: `unzip -oq Solis-voor-Homey-v114.zip -d app && cd app && npm install && homey app install`
+3. Then: `unzip -oq Solis-voor-Homey-v115.zip -d app && cd app && npm install && homey app install`
 4. In the Homey app: add a device **Solis** and fill in the IP address of the data logger, port 502 and ID 1.
 
 ## Dashboard on the Mac, tablet and phone
@@ -87,7 +87,7 @@ The same pages are drawn as images for the TV:
 | **Opties** (Settings) | Read-only overview of the app settings |
 | **Spaarpot** (Savings) | What your panels saved this month, last month, this year and in total, plus payback |
 | **Vergelijk** (Compare) | Which contract would have been cheapest, and this year versus last year with the weather |
-| **Kids** | Today's solar power in things a child knows (kilometres, coffee, phone charges) and a question of the day you can answer with the remote |
+| **Morgen** | Tomorrow at a glance: expected yield and sun per hour, tomorrow's prices (dynamic contract) with when the inverter will block export or switch off, and tips for the washing machine and dishwasher |
 
 Which pages appear, and in which order, is set in the app under **Pagina's en volgorde**.
 
@@ -97,7 +97,7 @@ See `tv-apps/README.md`. In short:
 
 - **Android TV / Google TV**: `tv-apps/downloads/Solis-AndroidTV.apk`. Install once with the Downloader app; after that the app updates itself (it asks, then shows the Android install screen).
 - **Apple TV**: `tv-apps/downloads/Solis-AppleTV-v4.ipa` (unsigned, for an install service that signs it). It shows a message when a newer version is on GitHub.
-- Left and right change page. On the Kids page: OK starts the question, left and right choose, OK answers, up or back stops.
+- Left and right change page.
 - New versions are announced in `tv-apps/versie.json`.
 
 ## Kodi add-on
@@ -233,7 +233,6 @@ The Solis app on Homey serves everything on its dashboard port (default 8765):
 - `/kodi.json` returns the data for the built-in pages.
 - `/meldingen.json?since=<id>` returns new notifications for the TV service.
 - `/apparaten.json` and `POST /arm` list and arm appliances (PIN protected).
-- `/beeld/page/kids.png?keuze=0..2&klaar=1` draws the Kids question with a chosen answer (used by the TV apps).
 
 You can open the image URLs in any browser to check them, for example `http://HOMEY-IP:8765/beeld/page/stroom.png`.
 

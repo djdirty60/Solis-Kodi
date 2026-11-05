@@ -1,7 +1,11 @@
-SOLIS VOOR HOMEY - versie 3.53.0 (v114)
+SOLIS VOOR HOMEY - versie 3.54.0 (v115)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v114.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v115.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.54.0:
+- Nieuwe pagina 'Morgen' (in plaats van Kids), op de computer, de tv, Kodi en de telefoon (tabblad Nu): verwachte opbrengst en zon per uur, de stroomprijs per uur van morgen (bij een dynamisch contract, met wanneer de omvormer op geen export of uit gaat), en tips: wanneer de was of vaatwasser het best kan, het goedkoopste uur, en wanneer je zelf zoveel mogelijk stroom moet gebruiken.
+- De pagina Kids is verwijderd. Stond Kids in je lijst met pagina's, dan staat daar nu Morgen.
 
 Nieuw in 3.53.0:
 - Instellingen: het vaste en het dynamische contract hebben nu elk een eigen blok ('Vast contract' en 'Dynamisch contract'), met eigen leverancier en eigen terugleverkosten. Je kunt je dynamische contract al invullen terwijl je vaste contract nog loopt; op de datum bij 'Overstappen naar dynamisch op' schakelt de app vanzelf over. De grenzen voor uit en geen export staan nu bij het dynamische contract.
