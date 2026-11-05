@@ -1,7 +1,10 @@
-SOLIS VOOR HOMEY - versie 3.57.0 (v118)
+SOLIS VOOR HOMEY - versie 3.58.0 (v119)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v118.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v119.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.58.0:
+- Dashboard ook buiten huis, via Homey: in de Homey-app onder Apps -> Solis voor Homey -> Instellingen staat bovenaan de knop 'Dashboard bekijken'. Het werkt overal waar de Homey-app werkt (ook via 4G, en op my.homey.app in de browser). Er gaat niets open op je router. Downloaden (back-up, CSV) kan alleen thuis.
 
 Nieuw in 3.57.0:
 - Dashboard op de computer: de 14 tabbladen bovenaan zijn samengevoegd tot 7 groepen. Nu (Zon, Stroom), Vandaag (Details, Verbruik, Dynamisch), Geld (Spaarpot, Vergelijk, Overzicht), Meer (Inzicht, Slim, Opties), Morgen, Gas & water en Rondgang. Klik op een groep en je ziet de onderdelen ervan; de groep onthoudt welk onderdeel je het laatst bekeek.
