@@ -88,6 +88,7 @@ The same pages are drawn as images for the TV:
 | **Spaarpot** (Savings) | What your panels saved this month, last month, this year and in total, plus payback |
 | **Vergelijk** (Compare) | Which contract would have been cheapest, and this year versus last year with the weather |
 | **Morgen** | Tomorrow at a glance: expected yield and sun per hour, tomorrow's prices (dynamic contract) with when the inverter will block export or switch off, and tips for the washing machine and dishwasher |
+| **Gas & water** | Gas and water use from the meters in Homey (e.g. Homey Energy Dongle and a water meter): today, yesterday, this month, 30-day average, costs and the last 14 days, plus a warning when water keeps flowing for an hour |
 
 Which pages appear, and in which order, is set in the app under **Pagina's en volgorde**.
 

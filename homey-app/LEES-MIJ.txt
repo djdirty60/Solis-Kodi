@@ -1,7 +1,13 @@
-SOLIS VOOR HOMEY - versie 3.54.0 (v115)
+SOLIS VOOR HOMEY - versie 3.55.0 (v116)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v115.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v116.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.55.0:
+- Nieuwe pagina 'Gas & water' op de computer, de tv en Kodi, en een kaart 'Gas en water' op de telefoon (tabblad Overzicht): verbruik vandaag, gisteren, deze maand en gemiddeld per dag, met de kosten en een staafje per dag voor de laatste 14 dagen. De app zoekt zelf de gasmeter (bijv. de Homey Energy Dongle) en de watermeter in Homey.
+- Melding als er al een uur onafgebroken water stroomt (kraan open of lek). De tijd stel je in.
+- Het dagrapport noemt nu ook gas en water.
+- Nieuwe instellingen onder 'Gas en water': aan/uit, gasprijs en waterprijs per m3, zelf een meter kiezen, en de lekmelding.
 
 Nieuw in 3.54.0:
 - Nieuwe pagina 'Morgen' (in plaats van Kids), op de computer, de tv, Kodi en de telefoon (tabblad Nu): verwachte opbrengst en zon per uur, de stroomprijs per uur van morgen (bij een dynamisch contract, met wanneer de omvormer op geen export of uit gaat), en tips: wanneer de was of vaatwasser het best kan, het goedkoopste uur, en wanneer je zelf zoveel mogelijk stroom moet gebruiken.

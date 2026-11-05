@@ -12,8 +12,8 @@
     "nieuw": "Meldt nieuwe versies. Kids-vraag: Menu of omhoog stopt de vraag."
   },
   "homey": {
-    "version": "3.54.0",
-    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v115.zip",
-    "nieuw": "Nieuwe pagina Morgen (zon, prijzen en tips voor morgen) in plaats van Kids."
+    "version": "3.55.0",
+    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v116.zip",
+    "nieuw": "Nieuwe pagina Gas & water, met een melding als er lang water blijft stromen."
   }
 }
