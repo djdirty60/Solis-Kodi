@@ -1,7 +1,10 @@
-SOLIS VOOR HOMEY - versie 3.58.1 (v120)
+SOLIS VOOR HOMEY - versie 3.59.0 (v121)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v120.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v121.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.59.0:
+- Solis als eigen icoon op je beginscherm, thuis en onderweg: https://djdirty60.github.io/Solis-voor-Homey/app/ . Eenmalig een API-sleutel van Homey invullen (staat alleen op je telefoon). De pagina haalt alles via de beveiligde verbinding van Homey op.
 
 Nieuw in 3.58.1:
 - Dashboard via Homey bleef leeg op de iPhone. Het dashboard opent nu direct in de pagina, zonder tussenvenster. Terug naar de instellingen gaat via het menu (de drie puntjes) of het vinkje van Homey. Gaat er iets mis, dan staat er een rode melding onderin in plaats van een leeg scherm.

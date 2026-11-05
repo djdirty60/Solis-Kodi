@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="nl"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Solis</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Solis">
+<meta name="theme-color" content="#f4f6fa">
+<meta name="referrer" content="no-referrer">
+<style id="solis-setup-css">
+:root{--bg:#f4f6fa;--c:#fff;--t:#0b1020;--s:#6a7388;--ln:#e3e7ef;--acc:#ff9f1c}
+@media (prefers-color-scheme:dark){:root{--bg:#0c0f1a;--c:#161b2e;--t:#f2f4fb;--s:#8b93ad;--ln:#2a3150}}
+html,body{margin:0;background:var(--bg);color:var(--t);font:16px/1.45 -apple-system,system-ui,"Segoe UI",sans-serif}
+.wrap{max-width:520px;margin:0 auto;padding:calc(env(safe-area-inset-top,0px) + 24px) 16px 40px}
+h1{font-size:30px;margin:0 0 4px}
+.sub{color:var(--s);margin:0 0 20px}
+.card{background:var(--c);border-radius:18px;padding:16px;margin-bottom:14px}
+.card h2{font-size:17px;margin:0 0 8px}
+ol{margin:0;padding-left:20px}ol li{margin:6px 0}
+label{display:block;font-weight:600;margin:12px 0 6px}
+input{box-sizing:border-box;width:100%;font:16px -apple-system,system-ui,sans-serif;padding:12px;border-radius:12px;border:1px solid var(--ln);background:var(--bg);color:var(--t)}
+button.go{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;margin-top:16px;padding:14px;border-radius:14px;background:var(--t);color:var(--bg);font-weight:700;cursor:pointer}
+#msg{margin-top:12px;min-height:22px;font-size:15px}
+#msg.err{color:#e5484d}
+.small{font-size:13px;color:var(--s)}
+#load{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;color:var(--s);font-size:15px}
+</style>
+</head><body>
+<div id="load">Bezig met laden...</div>
+<script>
+/* Solis onderweg: haalt het dashboard via de beveiligde verbinding van Homey op.
+   De API-sleutel staat alleen op dit apparaat (in de browser), nooit op GitHub. */
+(function(){
+ 'use strict';
+ var APP='com.leek.solis';
+ function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){return null}}
+ function hashArg(n){var m=new RegExp('[#&]'+n+'=([^&]+)').exec(location.hash||'');return m?decodeURIComponent(m[1]):null}
+ var hid=hashArg('homey');if(hid&&/^[a-f0-9]{24}$/.test(hid))ls('solisHomey',hid);if(!ls('solisHomey'))ls('solisHomey','65c3732470ba599d27530d8a');
+ var page=hashArg('p')||'';
+ function base(){return (ls('solisBase')||('https://'+ls('solisHomey')+'.connect.athom.com'))+'/api/app/'+APP+'/dash'}
+ function api(u,m,b){
+  var ctl=window.AbortController?new AbortController():null,t=setTimeout(function(){if(ctl)ctl.abort()},25000);
+  return fetch(base(),{method:'POST',headers:{'Authorization':'Bearer '+ls('solisKey'),'Content-Type':'application/json'},body:JSON.stringify({u:String(u),m:m||'GET',body:b||null}),signal:ctl?ctl.signal:undefined,cache:'no-store'})
+   .then(function(r){clearTimeout(t);if(r.status===401||r.status===403){var e=new Error('sleutel');e.key=true;throw e}if(!r.ok)throw new Error('Homey gaf fout '+r.status);return r.json()},function(e){clearTimeout(t);throw new Error(e&&e.name==='AbortError'?'Homey reageert niet':'Geen verbinding met Homey')})}
+
+ function setup(err){
+  document.title='Solis instellen';
+  document.body.innerHTML='<div class="wrap"><h1>Solis</h1><p class="sub">Je dashboard, thuis en onderweg.</p>'
+  +'<div class="card"><h2>Eenmalig instellen</h2><ol>'+'<li>Op de iPhone: tik eerst op de deel-knop en kies <b>Zet op beginscherm</b>. Open Solis daarna via het nieuwe icoon en doe de rest daar.</li>'
+  +'<li>Open op de computer <b>my.homey.app</b> en log in.</li>'
+  +'<li>Ga naar <b>Instellingen → API-sleutels</b> en kies <b>Nieuwe API-sleutel</b>.</li>'
+  +'<li>Geef hem een naam, bijvoorbeeld <b>Solis</b>. Zet bij de rechten <b>Apps</b> aan (of kies alles).</li>'
+  +'<li>Kopieer de sleutel en plak hem hieronder.</li></ol></div>'
+  +'<div class="card"><label for="hid">Homey-ID</label><input id="hid" autocomplete="off" autocapitalize="off" spellcheck="false" value="'+(ls('solisHomey')||'')+'">'
+  +'<label for="key">API-sleutel</label><input id="key" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="plak hier je sleutel">'
+  +'<button class="go" id="go">Opslaan en openen</button><div id="msg"></div>'
+  +'<p class="small">De sleutel blijft alleen op dit apparaat en staat nergens anders.</p></div></div>';
+  var msg=document.getElementById('msg');if(err){msg.textContent=err;msg.className='err'}
+  document.getElementById('go').onclick=function(){
+   var h=document.getElementById('hid').value.trim().toLowerCase(),k=document.getElementById('key').value.trim();
+   if(!/^[a-f0-9]{24}$/.test(h)){msg.textContent='Het Homey-ID klopt niet (24 tekens, cijfers en a t/m f).';msg.className='err';return}
+   if(!k&&!ls('solisKey')){msg.textContent='Plak eerst je API-sleutel.';msg.className='err';return}
+   ls('solisHomey',h);if(k)ls('solisKey',k);msg.textContent='Bezig met controleren...';msg.className='';
+   api('config').then(function(r){if(r&&r.status>=400)throw new Error(String(r.body||'fout').slice(0,120));location.hash='';location.reload()})
+    .catch(function(e){msg.className='err';msg.textContent=e.key?'De sleutel klopt niet, of het recht voor apps staat niet aan.':'Lukt niet: '+e.message})};
+ }
+
+ function start(){
+  var RE=/<script src="\/?([a-z0-9_-]+\.js)"><\/script>/gi;
+  api(page||'/').then(function(r){if(!r||r.status>=400)throw new Error(String((r&&r.body)||'fout').slice(0,120));var h=r.body,names=[],m;RE.lastIndex=0;while((m=RE.exec(h)))if(names.indexOf(m[1])<0)names.push(m[1]);
+   return Promise.all(names.map(function(n){return api(n).then(function(x){return x.body||''},function(){return ''})})).then(function(js){
+    return h.replace(RE,function(all,n){return '<script>'+String(js[names.indexOf(n)]||'').replace(/<\/script/gi,'<\\/script')+'<\/script>'})})})
+  .then(function(h){
+   var doc=new DOMParser().parseFromString(h,'text/html');
+   window.fetch=(function(orig){return function(u,o){o=o||{};var s=String(u);if(/^https?:/.test(s))return orig(u,o);var m=String(o.method||'GET').toUpperCase(),b=null;try{b=o.body?JSON.parse(o.body):null}catch(e){}
+    return api(s,m,b).then(function(r){var body=r.b64?Uint8Array.from(atob(r.body),function(c){return c.charCodeAt(0)}):r.body;return new Response(r.status===204?null:body,{status:r.status||200,headers:{'Content-Type':r.type||'text/plain'}})})}})(window.fetch);
+   window.SOLIS_REMOTE=1;window.SOLIS_BACK_LABEL='Sleutel of Homey wijzigen';
+   window.solisBack=function(){location.hash='#setup';location.reload()};
+   var note=function(t){var d=document.getElementById('solisErr');if(!d){d=document.createElement('div');d.id='solisErr';d.style.cssText='position:fixed;left:50%;transform:translateX(-50%);bottom:96px;z-index:2147483000;max-width:90vw;background:#b42318;color:#fff;border-radius:12px;padding:10px 14px;font:14px -apple-system,system-ui,sans-serif';document.body.appendChild(d)}d.textContent=t};
+   window.onerror=function(msg){note('Fout: '+String(msg).slice(0,90))};
+   document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a)return;var hr=a.getAttribute('href');if(/^(https?:|mailto:|#)/.test(hr))return;e.preventDefault();e.stopPropagation();
+    hr=hr.replace(/^(\.?\/)+/,'');if(hr&&!/^(index\.html|jaar|inzichten)(\?|$)/.test(hr)){note('Downloaden kan alleen thuis.');return}
+    location.hash='#p='+encodeURIComponent(hr);location.reload()},true);
+   var keep=document.getElementById('solis-setup-css');if(keep)keep.parentNode.removeChild(keep);
+   Array.prototype.slice.call(doc.head.querySelectorAll('style,title')).forEach(function(n){document.head.appendChild(document.importNode(n,true))});
+   document.body.innerHTML='';document.body.className=doc.body.className||'';
+   var run=function(sc){var n=document.createElement('script');n.text=sc.textContent;document.body.appendChild(n)};
+   Array.prototype.slice.call(doc.head.querySelectorAll('script')).forEach(run);
+   Array.prototype.slice.call(doc.body.childNodes).forEach(function(n){if(n.nodeName==='SCRIPT')run(n);else document.body.appendChild(document.importNode(n,true))});
+   if(page){var b=document.createElement('button');b.textContent='← Dashboard';b.style.cssText='position:fixed;left:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);z-index:2147483000;border:0;border-radius:99px;padding:8px 14px;background:#0b1020;color:#fff;font:600 14px -apple-system,system-ui,sans-serif';b.onclick=function(){location.hash='';location.reload()};var bar=document.querySelector('.bar');if(bar){b.style.position='static';b.style.marginRight='12px';b.style.flex='none';bar.insertBefore(b,bar.firstChild)}else{b.style.bottom='';b.style.top='calc(env(safe-area-inset-top,0px) + 10px)';document.documentElement.appendChild(b)}}
+   setTimeout(function(){var st=document.getElementById('stage');if(st&&!st.innerHTML)note('Het dashboard krijgt geen gegevens van de app.')},20000);
+  }).catch(function(e){setup(e.key?'De sleutel klopt niet, of het recht voor apps staat niet aan.':'Laden mislukt: '+(e.message||e)+'. Staat de Solis-app aan en is Homey online?')})}
+
+ if(/setup/.test(location.hash||'')||!ls('solisHomey')||!ls('solisKey'))setup();else start();
+})();
+</script>
+</body></html>
