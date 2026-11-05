@@ -1,7 +1,10 @@
-SOLIS VOOR HOMEY - versie 3.56.0 (v117)
+SOLIS VOOR HOMEY - versie 3.57.0 (v118)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v117.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v118.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.57.0:
+- Dashboard op de computer: de 14 tabbladen bovenaan zijn samengevoegd tot 7 groepen. Nu (Zon, Stroom), Vandaag (Details, Verbruik, Dynamisch), Geld (Spaarpot, Vergelijk, Overzicht), Meer (Inzicht, Slim, Opties), Morgen, Gas & water en Rondgang. Klik op een groep en je ziet de onderdelen ervan; de groep onthoudt welk onderdeel je het laatst bekeek.
 
 Nieuw in 3.56.0:
 - Gas en water: bij de eerste start haalt de app de oude dagen op uit de geschiedenis (Inzichten) van Homey, tot een jaar terug. Je ziet dus meteen gisteren, de laatste 14 dagen, deze maand en het gemiddelde. Een losse oude dag kan een klein beetje afwijken, omdat Homey oude standen per blok van een paar uur bewaart.

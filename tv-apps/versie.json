@@ -12,8 +12,8 @@
     "nieuw": "Meldt nieuwe versies. Kids-vraag: Menu of omhoog stopt de vraag."
   },
   "homey": {
-    "version": "3.56.0",
-    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v117.zip",
-    "nieuw": "Gas en water met geschiedenis uit Homey, en een overzichtelijker dashboard."
+    "version": "3.57.0",
+    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v118.zip",
+    "nieuw": "Overzichtelijker dashboard: tabbladen in groepen, en gas en water met geschiedenis."
   }
 }
