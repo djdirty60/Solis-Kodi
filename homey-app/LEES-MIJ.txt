@@ -1,7 +1,11 @@
-SOLIS VOOR HOMEY - versie 3.59.0 (v121)
+SOLIS VOOR HOMEY - versie 3.59.1 (v122)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v121.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v122.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.59.1:
+- 'Wat als?' telde alleen dagen die de app zelf had gemeten (bij jou 3), niet de dagen uit Homey Energie. Daardoor bleven de bedragen rond de nul. Nu tellen alle dagen mee.
+- Bij een vast contract met saldering is 'Wat je nu betaalt' nu het bedrag na saldering, net als op je jaarafrekening.
 
 Nieuw in 3.59.0:
 - Solis als eigen icoon op je beginscherm, thuis en onderweg: https://djdirty60.github.io/Solis-voor-Homey/app/ . Eenmalig een API-sleutel van Homey invullen (staat alleen op je telefoon). De pagina haalt alles via de beveiligde verbinding van Homey op.
