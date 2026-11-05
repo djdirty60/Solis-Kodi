@@ -12,8 +12,8 @@
     "nieuw": "Meldt nieuwe versies. Kids-vraag: Menu of omhoog stopt de vraag."
   },
   "homey": {
-    "version": "3.52.0",
-    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v113.zip",
-    "nieuw": "Kwartierprijzen, en na het einde van salderen rekent de app eerlijk met de terugleververgoeding (en bepaalt zelf wanneer terugleveren geld kost)."
+    "version": "3.53.0",
+    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v114.zip",
+    "nieuw": "Vast en dynamisch contract elk met eigen gegevens; kwartierprijzen; eerlijke terugleverwaarde na einde salderen."
   }
 }

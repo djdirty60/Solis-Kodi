@@ -1,7 +1,11 @@
-SOLIS VOOR HOMEY - versie 3.52.0 (v113)
+SOLIS VOOR HOMEY - versie 3.53.0 (v114)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v113.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v114.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.53.0:
+- Instellingen: het vaste en het dynamische contract hebben nu elk een eigen blok ('Vast contract' en 'Dynamisch contract'), met eigen leverancier en eigen terugleverkosten. Je kunt je dynamische contract al invullen terwijl je vaste contract nog loopt; op de datum bij 'Overstappen naar dynamisch op' schakelt de app vanzelf over. De grenzen voor uit en geen export staan nu bij het dynamische contract.
+- Wie al een dynamisch contract had, houdt zijn terugleverkosten en leverancier.
 
 Nieuw in 3.52.0:
 - Kwartierprijzen: de app haalt de stroomprijzen nu per kwartier op (zo rekenen dynamische contracten sinds oktober 2025). De sturing (geen export, uit) volgt het kwartier. Grafieken en planning tonen het gemiddelde per uur. Lukt het ophalen per kwartier niet, dan valt de app terug op uurprijzen.
