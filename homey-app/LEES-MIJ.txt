@@ -1,7 +1,10 @@
-SOLIS VOOR HOMEY - versie 3.60.1 (v124)
+SOLIS VOOR HOMEY - versie 3.60.2 (v125)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v124.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v125.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.60.2:
+- 'Test de LED-ring' gaf "Timeout after 10000ms": de test duurde langer dan de 10 seconden die de instellingenpagina wacht. De knop antwoordt nu meteen en de kleuren lopen daarna vanzelf.
 
 Nieuw in 3.60.1:
 - LED-ring: Homey laat apps de LED-ring op een Homey Pro (2023) niet zelf aansturen ("Missing Scopes"). De app geeft nu een seintje met de nieuwe kaart "LED-ring moet [kleur] tonen", en vier Flows met de LED-ring-kaart van Homey zetten de kleur.
