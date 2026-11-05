@@ -1,7 +1,12 @@
-SOLIS VOOR HOMEY - versie 3.55.0 (v116)
+SOLIS VOOR HOMEY - versie 3.56.0 (v117)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v116.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v117.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.56.0:
+- Gas en water: bij de eerste start haalt de app de oude dagen op uit de geschiedenis (Inzichten) van Homey, tot een jaar terug. Je ziet dus meteen gisteren, de laatste 14 dagen, deze maand en het gemiddelde. Een losse oude dag kan een klein beetje afwijken, omdat Homey oude standen per blok van een paar uur bewaart.
+- Dashboard overzichtelijker: op de telefoon staan kaarten zonder gegevens niet meer los onder elkaar, maar samen in één kaart 'Komt later' (tik erop om te zien wat erin zit). Lege kaarten bij Overzicht zijn weg.
+- Het slimme advies op de computer en de tv past nu altijd in de kaart.
 
 Nieuw in 3.55.0:
 - Nieuwe pagina 'Gas & water' op de computer, de tv en Kodi, en een kaart 'Gas en water' op de telefoon (tabblad Overzicht): verbruik vandaag, gisteren, deze maand en gemiddeld per dag, met de kosten en een staafje per dag voor de laatste 14 dagen. De app zoekt zelf de gasmeter (bijv. de Homey Energy Dongle) en de watermeter in Homey.
