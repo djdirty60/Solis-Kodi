@@ -12,8 +12,8 @@
     "nieuw": "Meldt nieuwe versies. Kids-vraag: Menu of omhoog stopt de vraag."
   },
   "homey": {
-    "version": "3.51.0",
-    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v112.zip",
-    "nieuw": "Planning annuleren op het dashboard (met pincode). Stekker uit als de was klaar is (instelling)."
+    "version": "3.52.0",
+    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v113.zip",
+    "nieuw": "Kwartierprijzen, en na het einde van salderen rekent de app eerlijk met de terugleververgoeding (en bepaalt zelf wanneer terugleveren geld kost)."
   }
 }

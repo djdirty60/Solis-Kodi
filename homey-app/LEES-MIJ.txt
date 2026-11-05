@@ -1,7 +1,12 @@
-SOLIS VOOR HOMEY - versie 3.51.0 (v112)
+SOLIS VOOR HOMEY - versie 3.52.0 (v113)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v112.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v113.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.52.0:
+- Kwartierprijzen: de app haalt de stroomprijzen nu per kwartier op (zo rekenen dynamische contracten sinds oktober 2025). De sturing (geen export, uit) volgt het kwartier. Grafieken en planning tonen het gemiddelde per uur. Lukt het ophalen per kwartier niet, dan valt de app terug op uurprijzen.
+- Na het einde van salderen (instelling 'Salderen stopt op', standaard 01-01-2027) rekent de app een teruggeleverde kWh als: beursprijs + vaste vergoeding van je leverancier + zonnebonus overdag, min terugleverkosten. Nieuwe instellingen bij Contract en tarieven: 'Dynamisch: vaste vergoeding bij teruglevering' (Zonneplan 0,02) en 'Dynamisch: zonnebonus' (Zonneplan 10 %).
+- 'Na het einde van salderen zelf bepalen wanneer terugleveren geld kost' (staat aan): de omvormer gaat op geen export zodra terugleveren meer kost dan het oplevert. De vaste grens is dan niet meer nodig.
 
 Nieuw in 3.51.0:
 - Dashboard (telefoon en computer), 'Plan en sturing': achter elk gepland apparaat staat een kruisje. Daarmee annuleer je de planning: een klaargezet apparaat wordt niet gestart en de flow 'Beste moment' gaat deze keer niet af. Daarna maakt de app gewoon weer een nieuwe planning. Je hebt de pincode nodig (dezelfde als voor de tv, bij Instellingen, Dashboard).
