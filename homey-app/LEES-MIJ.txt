@@ -1,7 +1,13 @@
-SOLIS VOOR HOMEY - versie 3.60.6 (v129)
+SOLIS VOOR HOMEY - versie 3.61.0 (v130)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v129.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v130.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.61.0:
+- Minder geheugen, zodat de app niet meer crasht met "Memory Warning Limit Reached" (en Kodi/tv weer beeld krijgen):
+  - Het pakket homey-api (ongeveer 25 MB) is eruit. De app vraagt apparaten, Inzichten en het energierapport nu zelf rechtstreeks aan Homey.
+  - Het tekenen van de tv-plaatjes gebruikt nu vaste buffers: ongeveer 14 MB minder per ronde.
+  - De P1-koppeling (als die aan staat) leest het vermogen nu elke 5 seconden op, in plaats van via een live-verbinding.
 
 Nieuw in 3.60.6:
 - Tv en Kodi hoeven niet meer op de Homey te wachten: het vorige plaatje gaat meteen mee en de Homey tekent daarna rustig een nieuw.
