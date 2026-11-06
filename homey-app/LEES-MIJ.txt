@@ -1,7 +1,10 @@
-SOLIS VOOR HOMEY - versie 3.60.4 (v127)
+SOLIS VOOR HOMEY - versie 3.60.5 (v128)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v127.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v128.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.60.5:
+- Geheugen opruimen na gebruik: heeft niemand het dashboard, Kodi of de tv-app twee minuten opgevraagd, dan laat de app alle bewaarde plaatjes en tekenbuffers los.
 
 Nieuw in 3.60.4:
 - App crashte met "Memory Warning Limit Reached": het geheugen zat al dagen tegen de grens van de Homey en de app werd steeds herstart. De plaatjes voor de tv/Kodi gebruiken nu steeds dezelfde buffer (scheelt ongeveer 30 MB), oude plaatjes worden weggegooid, en bij krap geheugen laat de app zijn bewaarde plaatjes los.
