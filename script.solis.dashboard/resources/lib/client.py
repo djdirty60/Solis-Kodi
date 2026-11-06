@@ -40,7 +40,7 @@ def fetch_pages(host, port, timeout=5, prefix=''):
     return pages
 
 
-def download_page(host, port, page, path, timeout=20, prefix='', ext='jpg'):
+def download_page(host, port, page, path, timeout=45, prefix='', ext='jpg'):
     """Haalt de afbeelding van een pagina op en schrijft die naar path."""
     with urlopen('%s%s/page/%s.%s' % (base_url(host, port), prefix, page, ext), timeout=timeout) as resp:
         body = resp.read()
@@ -80,3 +80,27 @@ def fetch_day(host, port, date=None, timeout=6):
     """Terugblik op een dag (/dag?datum=JJJJ-MM-DD); zonder datum is het gisteren."""
     path = '/dag' + ('?datum=%s' % date if date else '')
     return fetch_json(host, port, path, timeout)
+
+
+def why(exc):
+    """Korte, begrijpelijke reden van een mislukte opvraag (voor in beeld)."""
+    try:
+        code = getattr(exc, 'code', None)
+        if code:
+            body = ''
+            try:
+                body = exc.read().decode('utf-8', 'replace').strip()[:120]
+            except Exception:  # noqa: BLE001
+                pass
+            return 'Homey gaf fout %s%s' % (code, (': ' + body) if body else '')
+        reason = getattr(exc, 'reason', None) or exc
+        txt = str(reason)
+        if 'timed out' in txt or 'timeout' in txt.lower():
+            return 'Homey reageert te traag (time-out)'
+        if 'refused' in txt.lower():
+            return 'Homey weigert de verbinding (draait de Solis-app?)'
+        if 'Name or service not known' in txt or 'nodename' in txt or 'resolve' in txt.lower():
+            return 'adres niet gevonden'
+        return txt[:120]
+    except Exception:  # noqa: BLE001
+        return 'onbekende fout'

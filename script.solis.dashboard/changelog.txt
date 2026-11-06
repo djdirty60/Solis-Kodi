@@ -1,3 +1,8 @@
+2.6.1
+- Zwart scherm: de teksten gebruikten een eigen lettertype dat Kodi niet laadt, waardoor een foutmelding onzichtbaar bleef. Nu lettertypen die elke skin heeft.
+- Lukt een plaatje niet, dan staat de echte reden in beeld (bijv. time-out of een fout van de Homey) plus een melding rechtsboven.
+- Langer wachten op een plaatje (45 seconden).
+
 2.5.0
 - Nieuw: het lampje van het kastje als verkeerslicht (CoreELEC en andere Linux-kastjes met een bedienbaar lampje). Kies in de instellingen "Lampje van het kastje": drie lampjes, een RGB-lampje of een lampje (vast = groen, rustig knipperen = oranje, snel knipperen = rood). Met "Laat zien welke lampjes dit kastje heeft" zie je de namen. Lampje uit in de nacht en bij geen verbinding; bij afsluiten gaat het lampje terug naar hoe het was. Werkt niet op Fire TV of Android TV.
 - Veranderd: de kleurrand om het scherm kon Kodi laten vastlopen. Hij staat nu onder "Experimenteel", blijft standaard uit en wordt automatisch uitgezet als Kodi eerder is vastgelopen.

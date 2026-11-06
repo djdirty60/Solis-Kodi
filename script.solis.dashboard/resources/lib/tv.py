@@ -165,10 +165,12 @@ def shift_date(date_str, step, today=None):
 
 
 # ---------- grote letters ----------
-FONTS = {'sd_small': 'sd_small_l', 'sd_text': 'sd_text_l', 'sd_title': 'sd_title_l',
-         'sd_head': 'sd_head_l', 'sd_big': 'sd_big_l'}
+# Lettertypen uit de skin zelf: Kodi gebruikt geen lettertypen uit een add-on, dus namen die elke skin heeft.
+SKIN = {'sd_small': 'font12', 'sd_text': 'font13', 'sd_title': 'font14', 'sd_head': 'font30', 'sd_big': 'font45'}
+FONTS = {'sd_small': 'font14', 'sd_text': 'font27', 'sd_title': 'font30',
+         'sd_head': 'font37', 'sd_big': 'font52'}
 
 
 def font_for(name, big):
     """Naam van het lettertype, groter als 'grote letters' aan staat."""
-    return FONTS.get(name, name) if big else name
+    return FONTS.get(name, name) if big else SKIN.get(name, name)

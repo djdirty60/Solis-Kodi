@@ -226,7 +226,7 @@ class SolisImageWindow(xbmcgui.WindowXML):
                         self.index = min(self.index, len(pages) - 1)
                     listed = True
                 except Exception as exc:  # noqa: BLE001
-                    xbmc.log('Solis dashboard: paginalijst mislukt: %s' % exc, xbmc.LOGWARNING)
+                    xbmc.log('Solis dashboard: paginalijst mislukt bij %s:%s: %s' % (self.host, self.port, client.why(exc)), xbmc.LOGWARNING)
             if self.rotate and now - self._last_rotate >= self.rotate:
                 self._go(1)
             if self.host and (self._want or now - last >= self.refresh):
@@ -245,8 +245,15 @@ class SolisImageWindow(xbmcgui.WindowXML):
                         self._opruimen(self._flip - 3)
                     self._set(14, '')
                 except Exception as exc:  # noqa: BLE001
-                    xbmc.log('Solis dashboard: beeld ophalen mislukt: %s' % exc, xbmc.LOGWARNING)
-                    self._set(14, self.addon.getLocalizedString(30012))
+                    reden = client.why(exc)
+                    xbmc.log('Solis dashboard: beeld ophalen mislukt bij %s:%s: %s' % (self.host, self.port, reden), xbmc.LOGWARNING)
+                    self._set(14, '%s  [%s:%s: %s]' % (self.addon.getLocalizedString(30012), self.host, self.port, reden))
+                    if not getattr(self, '_told', False):
+                        self._told = True
+                        try:
+                            xbmcgui.Dialog().notification('Solis', '%s:%s - %s' % (self.host, self.port, reden), self.addon.getAddonInfo('icon'), 10000)
+                        except Exception:  # noqa: BLE001
+                            pass
                 self._hint_until = max(self._hint_until, now + 3) if self._hint_until == 0 else now + 3
                 self._set(13, self._page_title() + '   ' + self.addon.getLocalizedString(30070), tv.font_for('sd_text', self.big))
             if self._hint_until and now > self._hint_until:

@@ -76,7 +76,7 @@ assert tv.shift_date('2026-11-02', 1, today) == '2026-11-03' and tv.shift_date('
 assert tv.shift_date('2024-01-01', -1, today) == '2025-11-02'
 
 # grote letters
-assert tv.font_for('sd_text', False) == 'sd_text' and tv.font_for('sd_text', True) == 'sd_text_l'
+assert tv.font_for('sd_text', False) == 'font13' and tv.font_for('sd_text', True) == 'font27'
 assert tv.font_for('onbekend', True) == 'onbekend'
 assert tv.as_bool('true') and not tv.as_bool('false') and tv.as_bool('', True)
 print('tv OK')

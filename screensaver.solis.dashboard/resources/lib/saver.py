@@ -136,7 +136,7 @@ class Screensaver(xbmcgui.WindowXMLDialog):
                     if fails == 2 * len(self.hosts) and not self._told:
                         self._told = True
                         try:
-                            xbmcgui.Dialog().notification('Solis', 'Homey niet bereikbaar (%s). Vul het IP-adres van je Homey in bij deze schermbeveiliging.' % ', '.join('%s:%s' % hp for hp in self.hosts), self.addon.getAddonInfo('icon'), 8000)
+                            xbmcgui.Dialog().notification('Solis', 'Geen beeld van %s: %s' % (', '.join('%s:%s' % hp for hp in self.hosts), client.why(exc)), self.addon.getAddonInfo('icon'), 8000)
                         except Exception:  # noqa: BLE001
                             pass
                     if fails >= 2:
@@ -144,6 +144,6 @@ class Screensaver(xbmcgui.WindowXMLDialog):
                             self.getControl(20).setImage('', False)
                         except Exception:  # noqa: BLE001
                             pass
-                        self._set(14, self.msg_off)
+                        self._set(14, '%s  [%s:%s: %s]' % (self.msg_off, self.host, self.port, client.why(exc)))
             if monitor.waitForAbort(0.5):
                 break
