@@ -1,7 +1,13 @@
-SOLIS VOOR HOMEY - versie 3.61.0 (v130)
+SOLIS VOOR HOMEY - versie 3.61.1 (v131)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v130.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v131.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.61.1:
+- Nog minder geheugen bij tv/Kodi-plaatjes: de pixels staan meteen in PNG-vorm (geen tweede buffer van 6 MB meer).
+- Noodrem: zit de app boven 138 MB, dan krijgt de tv het vorige plaatje en tekent de app niet opnieuw. Liever een iets ouder plaatje dan een crash.
+- Plaatjes worden hooguit elke 45 seconden per pagina opnieuw getekend, en nooit twee vlak na elkaar.
+- Van de apparaten van Homey bewaart de app alleen nog naam, soort en waarden (niet alle instellingen).
 
 Nieuw in 3.61.0:
 - Minder geheugen, zodat de app niet meer crasht met "Memory Warning Limit Reached" (en Kodi/tv weer beeld krijgen):

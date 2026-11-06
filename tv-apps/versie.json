@@ -12,8 +12,8 @@
     "nieuw": "Meldt nieuwe versies. Kids-vraag: Menu of omhoog stopt de vraag."
   },
   "homey": {
-    "version": "3.61.0",
-    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v130.zip",
-    "nieuw": "Minder geheugen: geen crashes meer door het geheugen."
+    "version": "3.61.1",
+    "zip": "https://raw.githubusercontent.com/djdirty60/Solis-Kodi/main/homey-app/Solis-voor-Homey-v131.zip",
+    "nieuw": "Nog minder geheugen en een noodrem tegen crashes."
   }
 }
