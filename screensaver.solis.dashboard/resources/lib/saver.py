@@ -30,11 +30,10 @@ class Screensaver(xbmcgui.WindowXMLDialog):
         s = self.addon
         self._stop = False
         self._exit = self._Exit(self.close_saver)
-        self.host = s.getSetting('host') or 'homey.local'
-        try:
-            self.port = int(s.getSetting('port') or 8765)
-        except ValueError:
-            self.port = 8765
+        self.hosts = self._hosts()
+        self.hi = 0
+        self.host, self.port = self.hosts[0]
+        self._told = False
         try:
             self.seconds = max(5, int(s.getSetting('seconds') or 20))
         except ValueError:
@@ -46,6 +45,30 @@ class Screensaver(xbmcgui.WindowXMLDialog):
         self._n = 0
         self.index = 0
         threading.Thread(target=self._loop, daemon=True).start()
+
+    def _hosts(self):
+        """Waar de Homey te vinden is. Eigen instelling, en anders die van het Solis Dashboard (daar staat vaak al het IP-adres).
+        'homey.local' werkt op CoreELEC vaak niet; dan gaat het IP-adres van het dashboard voor."""
+        def port_of(v):
+            try:
+                return int(v or 8765)
+            except ValueError:
+                return 8765
+        own = ((self.addon.getSetting('host') or '').strip(), port_of(self.addon.getSetting('port')))
+        other = ('', 8765)
+        try:
+            import xbmcaddon
+            d = xbmcaddon.Addon('script.solis.dashboard')
+            other = ((d.getSetting('host') or '').strip(), port_of(d.getSetting('port')))
+        except Exception:  # noqa: BLE001
+            pass
+        out = []
+        weak = lambda h: (not h) or h.lower() == 'homey.local'
+        order = [other, own] if weak(own[0]) and not weak(other[0]) else [own, other]
+        for h, p in order + [('homey.local', 8765)]:
+            if h and (h, p) not in out:
+                out.append((h, p))
+        return out
 
     def onAction(self, action):
         self.close_saver()
@@ -105,7 +128,17 @@ class Screensaver(xbmcgui.WindowXMLDialog):
                 except Exception as exc:  # noqa: BLE001
                     fails += 1
                     if fails == 1:
-                        xbmc.log('Solis schermbeveiliging: beeld ophalen mislukt: %s' % exc, xbmc.LOGWARNING)
+                        xbmc.log('Solis schermbeveiliging: beeld ophalen mislukt bij %s:%s: %s' % (self.host, self.port, exc), xbmc.LOGWARNING)
+                    if len(self.hosts) > 1:   # volgende adres proberen
+                        self.hi = (self.hi + 1) % len(self.hosts)
+                        self.host, self.port = self.hosts[self.hi]
+                        listed = False
+                    if fails == 2 * len(self.hosts) and not self._told:
+                        self._told = True
+                        try:
+                            xbmcgui.Dialog().notification('Solis', 'Homey niet bereikbaar (%s). Vul het IP-adres van je Homey in bij deze schermbeveiliging.' % ', '.join('%s:%s' % hp for hp in self.hosts), self.addon.getAddonInfo('icon'), 8000)
+                        except Exception:  # noqa: BLE001
+                            pass
                     if fails >= 2:
                         try:
                             self.getControl(20).setImage('', False)

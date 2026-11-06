@@ -42,7 +42,7 @@
     </assets>
   </extension>
 </addon>
-<addon id="screensaver.solis.dashboard" name="Solis Dashboard Schermbeveiliging" version="1.0.0" provider-name="Wilfried van der Voort">
+<addon id="screensaver.solis.dashboard" name="Solis Dashboard Schermbeveiliging" version="1.1.0" provider-name="Wilfried van der Voort">
   <requires>
     <import addon="xbmc.python" version="3.0.0"/>
   </requires>

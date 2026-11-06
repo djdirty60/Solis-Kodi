@@ -1,2 +1,7 @@
+1.1.0
+- Zwart scherm opgelost: stond bij de schermbeveiliging nog 'homey.local' (werkt op CoreELEC vaak niet), dan gebruikt hij nu het IP-adres dat bij het Solis Dashboard is ingevuld. Lukt een adres niet, dan probeert hij het volgende.
+- Lukt het helemaal niet, dan zie je een melding in beeld met het adres dat niet werkt.
+- De tekst in beeld gebruikt nu een lettertype dat elke skin heeft.
+
 1.0.0
 - Eerste versie: het Solis-dashboard als schermbeveiliging, met wisselende pagina's en dimmen 's nachts.
