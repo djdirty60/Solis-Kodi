@@ -247,7 +247,7 @@ class SolisImageWindow(xbmcgui.WindowXML):
                 except Exception as exc:  # noqa: BLE001
                     reden = client.why(exc)
                     xbmc.log('Solis dashboard: beeld ophalen mislukt bij %s:%s: %s' % (self.host, self.port, reden), xbmc.LOGWARNING)
-                    self._set(14, '%s  [%s:%s: %s]' % (self.addon.getLocalizedString(30012), self.host, self.port, reden))
+                    self._set(14, 'Geen beeld van %s:%s\n%s' % (self.host, self.port, reden))
                     if not getattr(self, '_told', False):
                         self._told = True
                         try:

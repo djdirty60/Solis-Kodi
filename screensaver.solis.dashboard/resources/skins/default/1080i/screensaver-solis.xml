@@ -3,6 +3,6 @@
   <controls>
     <control type="image"><left>0</left><top>0</top><width>1920</width><height>1080</height><texture colordiffuse="FF000000">white.png</texture></control>
     <control type="image" id="20"><left>0</left><top>0</top><width>1920</width><height>1080</height><aspectratio>keep</aspectratio><texture></texture></control>
-    <control type="label" id="14"><left>80</left><top>500</top><width>1760</width><height>80</height><font>font13</font><textcolor>88FFFFFF</textcolor><align>center</align><label></label></control>
+    <control type="label" id="14"><left>80</left><top>500</top><width>1760</width><height>240</height><font>font13</font><textcolor>88FFFFFF</textcolor><align>center</align><wrapmultiline>true</wrapmultiline><label></label></control>
   </controls>
 </window>

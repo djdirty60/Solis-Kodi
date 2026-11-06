@@ -1,7 +1,11 @@
-SOLIS VOOR HOMEY - versie 3.60.5 (v128)
+SOLIS VOOR HOMEY - versie 3.60.6 (v129)
 
 Installeren (Terminal op de Mac, met de Homey CLI):
-unzip -oq Solis-voor-Homey-v128.zip -d app && cd app && npm install && homey app install
+unzip -oq Solis-voor-Homey-v129.zip -d app && cd app && npm install && homey app install
+
+Nieuw in 3.60.6:
+- Tv en Kodi hoeven niet meer op de Homey te wachten: het vorige plaatje gaat meteen mee en de Homey tekent daarna rustig een nieuw.
+- Lukt het tekenen van een pagina niet, dan krijgt de tv een plaatje met de foutmelding in plaats van niets.
 
 Nieuw in 3.60.5:
 - Geheugen opruimen na gebruik: heeft niemand het dashboard, Kodi of de tv-app twee minuten opgevraagd, dan laat de app alle bewaarde plaatjes en tekenbuffers los.

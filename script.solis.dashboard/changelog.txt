@@ -1,3 +1,6 @@
+2.6.2
+- De reden staat nu vooraan en volledig in beeld (eerst het adres, daaronder de reden).
+
 2.6.1
 - Zwart scherm: de teksten gebruikten een eigen lettertype dat Kodi niet laadt, waardoor een foutmelding onzichtbaar bleef. Nu lettertypen die elke skin heeft.
 - Lukt een plaatje niet, dan staat de echte reden in beeld (bijv. time-out of een fout van de Homey) plus een melding rechtsboven.

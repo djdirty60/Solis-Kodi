@@ -144,6 +144,6 @@ class Screensaver(xbmcgui.WindowXMLDialog):
                             self.getControl(20).setImage('', False)
                         except Exception:  # noqa: BLE001
                             pass
-                        self._set(14, '%s  [%s:%s: %s]' % (self.msg_off, self.host, self.port, client.why(exc)))
+                        self._set(14, 'Geen beeld van %s:%s\n%s' % (self.host, self.port, client.why(exc)))
             if monitor.waitForAbort(0.5):
                 break

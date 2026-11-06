@@ -45,7 +45,7 @@ time.sleep(0.8)
 S.down = True
 w2 = Screensaver('x', 'p', 'default', '1080i'); w2.addon = Addon(); w2.onInit()
 time.sleep(1.8)
-assert w2.ctls[14].label.startswith('T30006'), w2.ctls[14].label
+assert w2.ctls[14].label.startswith('Geen beeld'), w2.ctls[14].label
 assert w2.ctls[20].img is None or w2.ctls[20].img[0] == ''
 S.down = False
 for _ in range(60):
@@ -57,6 +57,6 @@ w2.close_saver()
 S.png_ok = False
 w3 = Screensaver('x', 'p', 'default', '1080i'); w3.addon = Addon(); w3.onInit()
 time.sleep(1.8)
-assert w3.ctls[14].label.startswith('T30006')
+assert w3.ctls[14].label.startswith('Geen beeld')
 w3.close_saver()
 print('saver OK')
